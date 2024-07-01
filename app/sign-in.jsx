@@ -36,7 +36,7 @@ export default function SignIn() {
       <Stack.Screen
         options={{
           title: "Sign In",
-          headerTintColor: tintColorLight,
+          headerTintColor: "black",
           headerStyle: {
             backgroundColor: Colors.primary,
           },

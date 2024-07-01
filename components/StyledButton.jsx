@@ -5,7 +5,6 @@ import {
   primary,
   secondary,
   tintColorDark,
-  tintColorLight,
 } from "../constants/ThemeVariables";
 
 export default function StyledButton({ text, onPress, style }) {
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
     borderWidth: borderWidth,
   },
   primaryButtonText: {
-    color: tintColorLight,
+    color: "black",
     fontSize: 18,
     textAlign: "center",
   },

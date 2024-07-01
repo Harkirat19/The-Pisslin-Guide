@@ -1,10 +1,3 @@
-import {
-  borderRadius,
-  labelFontSize,
-  primary,
-  secondary,
-  tintColorLight,
-} from "@/constants/ThemeVariables";
 import { Stack, router } from "expo-router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
@@ -39,9 +32,9 @@ export default function SignUp() {
       <Stack.Screen
         options={{
           title: "Create new account",
-          headerTintColor: tintColorLight,
+          headerTintColor: "black",
           headerStyle: {
-            backgroundColor: primary,
+            backgroundColor: background,
           },
         }}
       />
