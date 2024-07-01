@@ -8,8 +8,9 @@ import { router } from "expo-router";
 import { Colors } from "@/constants/ThemeVariables";
 
 export default function MapTab() {
-  const [posts, setPosts] = useState([]);
+  const imagepath = "@/assets/images/locationIcon.png";
   const [location, setLocation] = useState(null);
+  const [heading, setHeading] = useState(null);
 
   useEffect(() => {
     async function requestLocationPersmissions() {
@@ -26,24 +27,46 @@ export default function MapTab() {
         latitudeDelta: 0.15,
         longitudeDelta: 0.04,
       });
+
+      Location.watchHeadingAsync((newHeading) => {
+        setHeading(newHeading.trueHeading);
+      });
     }
     requestLocationPersmissions();
   }, []);
 
   return (
     <View style={styles.container}>
-      <MapView style={styles.map} initialRegion={location} region={location}>
-        <Marker
-          coordinate={location}
-          title="You are Here!!!"
-          pinColor={Colors.background}
-        ></Marker>
+      <MapView
+        style={styles.map}
+        initialRegion={location}
+        // showsUserLocation={true}
+        followsUserLocation={true}
+      >
         <Circle
           center={location}
           radius={50}
-          strokeColor="rgba(0, 112, 255, 0.5)" // Blue color
-          fillColor="rgba(0, 112, 255, 0.2)" // Translucent blue
+          strokeColor="rgba(0, 112, 255, 0.5)"
+          fillColor="rgba(0, 112, 255, 0.2)"
         />
+        {heading !== null && (
+          <Marker
+            coordinate={location}
+            anchor={{ x: 0.5, y: 0.5 }}
+            flat={true}
+            rotation={heading}
+            title="You are here!"
+          >
+            <Image
+              source={require(imagepath)} // arrow icon
+              style={{
+                width: 40,
+                height: 40,
+                transform: [{ rotate: `${heading}deg` }],
+              }}
+            />
+          </Marker>
+        )}
       </MapView>
     </View>
   );
