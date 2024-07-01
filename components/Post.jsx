@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import { Colors } from "../constants/ThemeVariables";
 
 export default function Post() {
   return (
@@ -25,11 +26,11 @@ export default function Post() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "lightyellow",
+    backgroundColor: Colors.yellow,
     padding: 10,
     margin: 10,
     borderRadius: 8,
-    shadowColor: "#000",
+    shadowColor: Colors.text,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
   distance: {
     fontSize: 12,
     marginBottom: 5,
-    color: "gray",
+    color: Colors.red,
   },
   description: {
     fontSize: 14,
