@@ -1,8 +1,4 @@
 import StyledButton from "@/components/StyledButton";
-import {
-  labelFontSize,
-  placeholderTextColor,
-} from "@/constants/ThemeVariables";
 import { auth } from "@/firebase-config";
 import * as ImagePicker from "expo-image-picker";
 import { router } from "expo-router";
@@ -16,8 +12,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { backgroundYellow, black, pink } from "../constants/ThemeVariables";
-
+import { Colors } from "@/constants/ThemeVariables";
 export default function EditProfileModal() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -98,7 +93,6 @@ export default function EditProfileModal() {
         onChangeText={setName}
         value={name}
         placeholder="Type your name"
-        placeholderTextColor={placeholderTextColor}
         autoCapitalize="none"
       />
       <Text style={styles.label}>Surname</Text>
@@ -107,7 +101,6 @@ export default function EditProfileModal() {
         onChangeText={setSurname}
         value={surname}
         placeholder="Type your name"
-        placeholderTextColor={placeholderTextColor}
         autoCapitalize="none"
       />
       <View style={styles.buttonContainer}>
@@ -121,11 +114,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: backgroundYellow,
+    backgroundColor: Colors.background,
   },
   label: {
-    fontSize: labelFontSize,
-    color: black,
+    color: Colors.text,
     marginTop: 30,
     marginBottom: 5,
   },
@@ -134,12 +126,12 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "white",
     borderRadius: 6,
-    borderColor: pink,
+    borderColor: Colors.pink,
     borderWidth: 4,
   },
   imageContainer: {
     borderWidth: 5,
-    borderColor: pink,
+    borderColor: Colors.pink,
     borderRadius: 200,
   },
   image: {

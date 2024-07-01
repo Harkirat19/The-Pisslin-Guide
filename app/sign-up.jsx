@@ -10,8 +10,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import StyledButton from "../components/StyledButton";
-import { pink, placeholderTextColor } from "../constants/ThemeVariables";
 import { auth } from "../firebase-config"; // Import the auth object from firebase
+import { Colors } from "../constants/ThemeVariables";
 
 export default function SignUp() {
   const [mail, setMail] = useState("");
@@ -51,7 +51,6 @@ export default function SignUp() {
         onChangeText={setMail}
         value={mail}
         placeholder="Type your mail"
-        placeholderTextColor={placeholderTextColor}
         autoCapitalize="none"
       />
       <Text style={styles.label}>Password</Text>
@@ -61,7 +60,6 @@ export default function SignUp() {
         value={password}
         secureTextEntry={true}
         placeholder="Type your password"
-        placeholderTextColor={placeholderTextColor}
       />
       <Text style={styles.errorMessage}>{message}</Text>
       <StyledButton
@@ -77,7 +75,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: secondary,
+    backgroundColor: Colors.background,
   },
   main: {
     flex: 1,
@@ -86,16 +84,15 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
   },
   label: {
-    fontSize: labelFontSize,
-    color: black,
+    color: Colors.text,
     marginTop: 30,
     marginBottom: 5,
   },
   input: {
     height: 50,
     padding: 10,
-    backgroundColor: tintColorLight,
-    borderColor: black,
+    backgroundColor: "white",
+    borderColor: Colors.text,
     borderWidth: 2,
   },
   errorMessage: {

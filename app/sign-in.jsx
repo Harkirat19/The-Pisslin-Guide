@@ -1,8 +1,6 @@
 import {
-  borderRadius,
   labelFontSize,
   primary,
-  secondary,
   tintColorLight,
 } from "@/constants/ThemeVariables";
 import { Stack, router } from "expo-router";
@@ -10,14 +8,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import StyledButton from "../components/StyledButton";
-import {
-  backgroundYellow,
-  black,
-  pink,
-  placeholderTextColor,
-} from "../constants/ThemeVariables";
 import { auth } from "../firebase-config"; // Import the auth object from firebase
-
+import { Colors } from "../constants/ThemeVariables";
 export default function SignIn() {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -61,7 +53,6 @@ export default function SignIn() {
         onChangeText={setMail}
         value={mail}
         placeholder="Type your mail"
-        placeholderTextColor={placeholderTextColor}
         autoCapitalize="none"
       />
       <Text style={styles.label}>Password</Text>
@@ -71,7 +62,6 @@ export default function SignIn() {
         value={password}
         secureTextEntry={true}
         placeholder="Type your password"
-        placeholderTextColor={placeholderTextColor}
       />
       <Text style={styles.errorMessage}>{message}</Text>
       <StyledButton text="Sign In" onPress={handleSignIn} style="primary" />
@@ -88,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: backgroundYellow,
+    backgroundColor: Colors.background,
   },
   main: {
     flex: 1,
@@ -98,15 +88,15 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: labelFontSize,
-    color: black,
+    color: Colors.text,
     marginTop: 30,
     marginBottom: 5,
   },
   input: {
     height: 50,
     padding: 10,
-    backgroundColor: tintColorLight,
-    borderColor: black,
+    backgroundColor: "white",
+    borderColor: Colors.text,
     borderWidth: 2,
   },
   errorMessage: {

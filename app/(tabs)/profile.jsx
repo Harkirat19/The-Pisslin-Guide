@@ -1,14 +1,5 @@
 import StyledButton from "@/components/StyledButton";
-import {
-  borderRadius,
-  labelFontSize,
-  placeholderTextColor,
-  primary,
-  secondary,
-  tintColorLight,
-} from "@/constants/ThemeVariables";
 import { auth } from "@/firebase-config";
-import * as ImagePicker from "expo-image-picker";
 import { Stack, router } from "expo-router";
 import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
@@ -19,12 +10,9 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
-  TouchableOpacity,
   View,
 } from "react-native";
-import { backgroundYellow, black, pink } from "../../constants/ThemeVariables";
-
+import { Colors } from "../../constants/ThemeVariables";
 export default function Profile() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -103,11 +91,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: backgroundYellow,
+    backgroundColor: Colors.background,
   },
   label: {
-    fontSize: labelFontSize,
-    color: black,
+    color: Colors.black,
     marginTop: 30,
     marginBottom: 5,
     fontSize: 20,
@@ -117,17 +104,14 @@ const styles = StyleSheet.create({
   input: {
     height: 50,
     padding: 10,
-    backgroundColor: tintColorLight,
-    borderRadius: borderRadius,
-    borderColor: primary,
-    borderWidth: 2,
+    backgroundColor: "white",
+    borderRadius: 6,
   },
   imageContainer: {
     borderWidth: 5,
-    borderColor: pink,
+    borderColor: Colors.pink,
     borderRadius: 200,
     padding: 0,
-    backgroundColor: tintColorLight,
   },
   image: {
     aspectRatio: 1,
