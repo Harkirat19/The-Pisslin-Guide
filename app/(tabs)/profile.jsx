@@ -1,3 +1,4 @@
+
 import StyledButton from "@/components/StyledButton";
 import { auth } from "@/firebase-config";
 import { Stack, router } from "expo-router";
@@ -84,6 +85,7 @@ export default function Profile() {
         </View>
       </View>
     </ScrollView>
+
   );
 }
 

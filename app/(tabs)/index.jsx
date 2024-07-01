@@ -2,10 +2,11 @@ import { StyleSheet, ScrollView, Text, View } from "react-native";
 import Post from "../../components/Post";
 import { Colors } from "@/constants/ThemeVariables";
 
-export default function TabOneScreen() {
+
+export default function Home() {
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Home</Text>
+      <Text style={styles.title}>The Pisslin' Guide</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
