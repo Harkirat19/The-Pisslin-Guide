@@ -1,25 +1,23 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
-export default function Post({ post }) {
-  function formatDate(timestamp) {
-    const createdAt = new Date(timestamp);
-    return createdAt.toLocaleDateString();
-  }
-
+export default function Post() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Placeholder Bathroom</Text>
-
       <Image
         style={styles.image}
-        source={"http://cederdorff.com/race/images/placeholder-image.webp"}
+        source={{
+          uri: "http://cederdorff.com/race/images/placeholder-image.webp",
+        }}
       />
 
-      <View style={styles.footer}>
-        <Text style={styles.city}>Louvain La Neuve</Text>
-        <Text style={styles.country}>Belgium</Text>
-        <Text style={styles.date}>22.2.222</Text>
+      <View style={styles.content}>
+        <Text style={styles.title}>Placeholder Bathroom</Text>
+        <Text style={styles.rating}>Rating: ★★★★☆</Text>
+        <Text style={styles.distance}>~300m</Text>
+        <Text style={styles.description}>
+          This is a short description of the placeholder bathroom.
+        </Text>
       </View>
     </View>
   );
@@ -36,20 +34,40 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    width: "95%",
+    flexDirection: "row", // Align items in a row
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginRight: 10,
+  },
+  content: {
+    flex: 1, // Take up remaining space
+    justifyContent: "center", // Center vertically
   },
   title: {
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: 5,
   },
-  image: {
-    width: "100%",
-    height: 200,
+  rating: {
+    fontSize: 14,
+    marginBottom: 5,
+  },
+  distance: {
+    fontSize: 12,
+    marginBottom: 5,
+    color: "gray",
+  },
+  description: {
+    fontSize: 14,
     marginBottom: 10,
   },
   footer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    marginTop: 10,
   },
   city: {
     fontSize: 14,
