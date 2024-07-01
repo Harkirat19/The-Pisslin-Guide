@@ -2,6 +2,7 @@ import { StyleSheet, ScrollView, Text, View } from "react-native";
 import Post from "../../components/Post";
 import { Colors } from "@/constants/ThemeVariables";
 
+
 export default function Home() {
   return (
     <ScrollView style={styles.container}>

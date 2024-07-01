@@ -1,3 +1,4 @@
+
 // TabLayout.jsx
 
 import React from "react";
@@ -12,6 +13,8 @@ function TabBarIcon(props) {
 }
 
 export default function TabLayout() {
+
+  const colorScheme = useColorScheme();
   return (
     <Tabs
       screenOptions={({ route }) => ({
@@ -39,11 +42,27 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors.yellow,
         tabBarInactiveTintColor: Colors.background,
       })}
+
     >
       <Tabs.Screen
         name="index"
         options={{
           title: "Home",
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerRight: () => (
+            <Link href="/modal" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="info-circle"
+                    size={25}
+                    color={Colors[colorScheme ?? "light"].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
         }}
       />
       <Tabs.Screen
@@ -56,6 +75,7 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: "Profile",
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
       />
     </Tabs>
