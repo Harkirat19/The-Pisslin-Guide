@@ -34,7 +34,7 @@ export default function SignUp() {
           title: "Create new account",
           headerTintColor: "black",
           headerStyle: {
-            backgroundColor: background,
+            backgroundColor: Colors.background,
           },
         }}
       />
