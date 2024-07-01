@@ -7,3 +7,31 @@ export const Colors = {
   red: "#eb4c29",
   pink: "#f9c5c1",
 };
+
+export const FontSizes = {
+  small: 12,
+  medium: 16,
+  large: 20,
+};
+
+export const Spacing = {
+  small: 8,
+  medium: 16,
+  large: 24,
+};
+
+export const BorderRadius = {
+  small: 4,
+  medium: 8,
+  large: 12,
+};
+
+// Export all constants as default
+const ThemeVariables = {
+  Colors,
+  FontSizes,
+  Spacing,
+  BorderRadius,
+};
+
+export default ThemeVariables;
