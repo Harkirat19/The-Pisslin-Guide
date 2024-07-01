@@ -19,5 +19,5 @@
     "app/+not-found.jsx",
     "app/+html.jsx",
     "app/_layout.jsx"
-, "app/(tabs)/index.jsx", "app/(tabs)/two.jsx"  ]
+, "app/(tabs)/index.jsx", "app/(tabs)/two.jsx", "app/(tabs)/_layout.jsx"  ]
 }
