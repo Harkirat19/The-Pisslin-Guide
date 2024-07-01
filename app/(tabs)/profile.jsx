@@ -1,4 +1,3 @@
-
 import StyledButton from "@/components/StyledButton";
 import { auth } from "@/firebase-config";
 import { Stack, router } from "expo-router";
@@ -56,7 +55,7 @@ export default function Profile() {
           headerRight: () => (
             <Button
               title="Sign Out"
-              color={Platform.OS === "ios" ? tintColorLight : primary}
+              color={Colors.primary}
               onPress={handleSignOut}
             />
           ),
@@ -85,7 +84,6 @@ export default function Profile() {
         </View>
       </View>
     </ScrollView>
-
   );
 }
 

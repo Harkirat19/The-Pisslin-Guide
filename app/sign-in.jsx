@@ -1,8 +1,3 @@
-import {
-  labelFontSize,
-  primary,
-  tintColorLight,
-} from "@/constants/ThemeVariables";
 import { Stack, router } from "expo-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
@@ -43,7 +38,7 @@ export default function SignIn() {
           title: "Sign In",
           headerTintColor: tintColorLight,
           headerStyle: {
-            backgroundColor: primary,
+            backgroundColor: Colors.primary,
           },
         }}
       />
@@ -87,7 +82,6 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
   },
   label: {
-    fontSize: labelFontSize,
     color: Colors.text,
     marginTop: 30,
     marginBottom: 5,
