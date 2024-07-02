@@ -44,7 +44,7 @@ export default function MapTab() {
         followsUserLocation={true}
       >
         <Circle
-          center={location}
+          // center={location}
           radius={50}
           strokeColor="rgba(0, 112, 255, 0.5)"
           fillColor="rgba(0, 112, 255, 0.2)"
