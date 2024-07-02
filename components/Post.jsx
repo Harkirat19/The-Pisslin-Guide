@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { Colors } from "../constants/ThemeVariables";
 
-export default function Post({ toilet, key }) {
+export default function Post({ toilet }) {
   return (
-    <View style={styles.container} key={key}>
+    <ScrollView style={styles.container}>
       <Image
         style={styles.image}
         source={{
@@ -13,14 +13,15 @@ export default function Post({ toilet, key }) {
       />
 
       <View style={styles.content}>
-        <Text style={styles.title}>{toilet[0]?.street}</Text>
+        <Text style={styles.title}>{toilet?.adrvoisfr}</Text>
         <Text style={styles.rating}>Rating: ★★★★☆</Text>
         <Text style={styles.distance}>~300m</Text>
+        <Text style={styles.distance}>{toilet?.heureouv}</Text>
         <Text style={styles.description}>
           This is a short description of the placeholder bathroom.
         </Text>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
