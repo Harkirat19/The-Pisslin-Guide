@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.gray,
-    padding: 15,
+    paddingLeft: 15,
+    paddingTop: 10,
   },
 
   title: {
@@ -62,7 +63,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2, // Shadow opacity
     shadowRadius: 4, // Shadow radius
     elevation: 3, // Required for Android to show shadow
-
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
