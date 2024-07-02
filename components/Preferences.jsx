@@ -37,6 +37,7 @@ export default function FilterContainer() {
               backgroundColor: Colors.background,
             }}
           />
+          <Text style={styles.distancetext}>3m</Text>
         </View>
 
         <View style={styles.preference}>
@@ -48,7 +49,7 @@ export default function FilterContainer() {
           />
         </View>
                 <View style={styles.preference}>
-          <Text style={styles.smalltitle}>Urinals ok?</Text>
+          <Text style={styles.smalltitle}>Urinals</Text>
           <CheckBox
             left
             checked={check2}
@@ -89,4 +90,11 @@ const styles = StyleSheet.create({
     fontSize: FontSizes.small,
     fontWeight: "bold",
   },
+
+  distancetext: {
+    fontSize: FontSizes.small,
+    color: Colors.darkgray,
+    textAlign: "center",
+    marginTop: -10,
+  }
 });
