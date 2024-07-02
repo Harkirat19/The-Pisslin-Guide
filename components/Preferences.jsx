@@ -8,6 +8,7 @@ import { useState } from "react";
 export default function FilterContainer() {
     const [check1, setCheck1] = useState(false);
     const [check2, setCheck2] = useState(false);
+     const [value, setValue] = useState(1);
 
   return (
     <View style={styles.container}>
@@ -36,25 +37,22 @@ export default function FilterContainer() {
               width: 16,
               backgroundColor: Colors.background,
             }}
+            minimumValue={1}
+            maximumValue={100}
+            step={1}
+            value={value}
+            onValueChange={setValue}
           />
-          <Text style={styles.distancetext}>3m</Text>
+          <Text style={styles.distancetext}>{value} km</Text>
         </View>
 
         <View style={styles.preference}>
           <Text style={styles.smalltitle}>Free</Text>
-          <CheckBox
-            left
-            checked={check1}
-            onPress={() => setCheck1(!check1)}
-          />
+          <CheckBox left checked={check1} onPress={() => setCheck1(!check1)} />
         </View>
-                <View style={styles.preference}>
+        <View style={styles.preference}>
           <Text style={styles.smalltitle}>Urinals</Text>
-          <CheckBox
-            left
-            checked={check2}
-            onPress={() => setCheck2(!check2)}
-          />
+          <CheckBox left checked={check2} onPress={() => setCheck2(!check2)} />
         </View>
       </View>
     </View>
