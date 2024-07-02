@@ -11,6 +11,30 @@ export default function MapTab() {
   const imagepath = "@/assets/images/locationIcon.png";
   const [location, setLocation] = useState(null);
   const [heading, setHeading] = useState(null);
+  const [toilets, setToilets] = useState([]);
+
+  useEffect(() => {
+    getToilets();
+  }, []);
+
+  async function getToilets() {
+    try {
+      const response = await fetch(
+        "https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets.json"
+      );
+      const data = await response.json();
+      console.log(data);
+      const arrayOfToilets = Object.keys(data).map((key) => {
+        return {
+          id: key,
+          ...data[key],
+        };
+      });
+      setToilets(arrayOfToilets);
+    } catch (error) {
+      console.error("Error fetching toilets: ", error);
+    }
+  }
 
   useEffect(() => {
     async function requestLocationPersmissions() {
@@ -67,6 +91,35 @@ export default function MapTab() {
             />
           </Marker>
         )}
+        {toilets.map((toilet) => {
+          let latitude, longitude;
+
+          // Check for coordinates
+          if (toilet.wgs84_lat && toilet.wgs84_long) {
+            latitude = parseFloat(toilet.wgs84_lat);
+            longitude = parseFloat(toilet.wgs84_long);
+          } else {
+            console.error("Invalid coordinates for toilet:", toilet);
+            return null;
+          }
+
+          if (!isNaN(latitude) && !isNaN(longitude)) {
+            return (
+              <Marker
+                key={toilet.id}
+                coordinate={{
+                  latitude: latitude,
+                  longitude: longitude,
+                }}
+                title={toilet.typeeng}
+                description={toilet.adrvoisfr}
+              />
+            );
+          } else {
+            console.error("Invalid coordinates for toilet:", toilet);
+            return null;
+          }
+        })}
       </MapView>
     </View>
   );
