@@ -3,7 +3,6 @@ import Post from "../../components/Post";
 import { Colors } from "@/constants/ThemeVariables";
 import FilterContainer from "@/components/FilterContainer"
 
-
 export default function Home() {
   return (
       <ScrollView style={styles.container}>
@@ -25,7 +24,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: Colors.text,
   },
   separator: {
