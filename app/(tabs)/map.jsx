@@ -9,6 +9,7 @@ import { Colors } from "@/constants/ThemeVariables";
 
 export default function MapTab() {
   const imagepath = "@/assets/images/locationIcon.png";
+  const imagepath2 = "@/assets/images/toiletSign.png";
   const [location, setLocation] = useState(null);
   const [heading, setHeading] = useState(null);
   const [toilets, setToilets] = useState([]);
@@ -23,7 +24,7 @@ export default function MapTab() {
         "https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets.json"
       );
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       const arrayOfToilets = Object.keys(data).map((key) => {
         return {
           id: key,
@@ -92,17 +93,8 @@ export default function MapTab() {
           </Marker>
         )}
         {toilets.map((toilet) => {
-          let latitude, longitude;
-
-          // Check for coordinates
-          if (toilet.wgs84_lat && toilet.wgs84_long) {
-            latitude = parseFloat(toilet.wgs84_lat);
-            longitude = parseFloat(toilet.wgs84_long);
-          } else {
-            console.error("Invalid coordinates for toilet:", toilet);
-            return null;
-          }
-
+          const latitude = parseFloat(toilet.wgs84_lat);
+          const longitude = parseFloat(toilet.wgs84_long);
           if (!isNaN(latitude) && !isNaN(longitude)) {
             return (
               <Marker
@@ -113,7 +105,15 @@ export default function MapTab() {
                 }}
                 title={toilet.typeeng}
                 description={toilet.adrvoisfr}
-              />
+              >
+                <Image
+                  source={require(imagepath2)} // toilet sign
+                  style={{
+                    width: 40,
+                    height: 40,
+                  }}
+                />
+              </Marker>
             );
           } else {
             console.error("Invalid coordinates for toilet:", toilet);
