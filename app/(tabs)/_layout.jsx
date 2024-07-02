@@ -21,7 +21,7 @@ export default function TabLayout() {
 
           if (route.name === "index") {
             iconName = "home";
-          } else if (route.name === "map") {
+          } else if (route.name === "Map") {
             iconName = "map";
           } else if (route.name === "profile") {
             iconName = "user";
@@ -49,7 +49,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="map"
+        name="Map"
         options={{
           title: "Map",
         }}

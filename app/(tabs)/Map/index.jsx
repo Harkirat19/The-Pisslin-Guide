@@ -6,10 +6,11 @@ import { Callout } from "react-native-maps";
 import { Text, Image } from "react-native";
 import { router } from "expo-router";
 import { Colors } from "@/constants/ThemeVariables";
+import { useNavigation } from "@react-navigation/native";
+import toiletSign from "@/assets/images/toiletSign.png";
+import locationIcon from "@/assets/images/locationIcon.png";
 
 export default function MapTab() {
-  const imagepath = "@/assets/images/locationIcon.png";
-  const imagepath2 = "@/assets/images/toiletSign.png";
   const [location, setLocation] = useState(null);
   const [heading, setHeading] = useState(null);
   const [toilets, setToilets] = useState([]);
@@ -83,7 +84,7 @@ export default function MapTab() {
             title="You are here!"
           >
             <Image
-              source={require(imagepath)} // arrow icon
+              source={locationIcon} // arrow icon
               style={{
                 width: 40,
                 height: 40,
@@ -107,10 +108,11 @@ export default function MapTab() {
                 description={toilet.adrvoisfr}
               >
                 <Image
-                  source={require(imagepath2)} // toilet sign
+                  source={toiletSign} // toilet sign
                   style={{
-                    width: 40,
-                    height: 40,
+                    width: 50,
+                    height: 50,
+                    resizeMode: "contain",
                   }}
                 />
               </Marker>
