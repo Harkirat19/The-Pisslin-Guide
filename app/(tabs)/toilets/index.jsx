@@ -1,5 +1,5 @@
-import { StyleSheet, ScrollView, Text, View } from "react-native";
-import Post from "../../components/Post";
+import { StyleSheet, ScrollView, Text, View, FlatList } from "react-native";
+import Post from "../../../components/Post";
 import { Colors } from "@/constants/ThemeVariables";
 import { useEffect, useState } from "react";
 
@@ -23,19 +23,20 @@ export default function Home() {
     toiletsArray.sort((a, b) => b.createdAt - a.createdAt);
     setToilets(toiletsArray);
   }
-  console.log(toilets);
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>The Pisslin' Guide</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      {toilets.map((toilet) => (
-        <Post key={toilet.id} toilet={toilet} />
-      ))}
-    </ScrollView>
+      <FlatList
+        data={toilets}
+        renderItem={({ item }) => <Post toilet={item} />}
+        keyExtractor={(item) => item.id}
+      />
+    </View>
   );
 }
 

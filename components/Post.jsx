@@ -1,10 +1,21 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { Colors } from "../constants/ThemeVariables";
+import { router } from "expo-router";
 
 export default function Post({ toilet }) {
   return (
-    <ScrollView style={styles.container}>
+    <TouchableOpacity
+      onPress={() => router.push(`/toilets/${toilet.id}`)}
+      style={styles.container}
+    >
       <Image
         style={styles.image}
         source={{
@@ -21,7 +32,7 @@ export default function Post({ toilet }) {
           This is a short description of the placeholder bathroom.
         </Text>
       </View>
-    </ScrollView>
+    </TouchableOpacity>
   );
 }
 
