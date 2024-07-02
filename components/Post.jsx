@@ -2,9 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Colors } from "../constants/ThemeVariables";
 
-export default function Post() {
+export default function Post({ toilet, key }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} key={key}>
       <Image
         style={styles.image}
         source={{
@@ -13,7 +13,7 @@ export default function Post() {
       />
 
       <View style={styles.content}>
-        <Text style={styles.title}>Placeholder Bathroom</Text>
+        <Text style={styles.title}>{toilet[0]?.street}</Text>
         <Text style={styles.rating}>Rating: ★★★★☆</Text>
         <Text style={styles.distance}>~300m</Text>
         <Text style={styles.description}>

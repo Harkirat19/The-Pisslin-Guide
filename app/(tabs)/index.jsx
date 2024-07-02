@@ -1,9 +1,29 @@
 import { StyleSheet, ScrollView, Text, View } from "react-native";
 import Post from "../../components/Post";
 import { Colors } from "@/constants/ThemeVariables";
-
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [toilets, setToilets] = useState([]);
+  useEffect(() => {
+    getToilets();
+  }, []);
+
+  async function getToilets() {
+    const response = await fetch(
+      "https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets.json"
+    );
+    const data = await response.json();
+    const toiletsArray = Object.keys(data).map((key) => {
+      return {
+        id: key,
+        ...data[key],
+      };
+    });
+    toiletsArray.sort((a, b) => b.createdAt - a.createdAt);
+    setToilets(toiletsArray);
+  }
+  console.log(toilets);
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>The Pisslin' Guide</Text>
@@ -12,7 +32,9 @@ export default function Home() {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <Post></Post>
+      {toilets.map((toilet) => (
+        <Post key={toilet.id} toilet={toilet} />
+      ))}
     </ScrollView>
   );
 }
@@ -24,7 +46,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: Colors.text,
   },
   separator: {
