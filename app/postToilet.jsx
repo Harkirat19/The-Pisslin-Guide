@@ -24,7 +24,7 @@ export default function PostModal() {
   const { showActionSheetWithOptions } = useActionSheet();
   const router = useRouter();
   const { id } = useLocalSearchParams();
-  console.log("post id:", id);
+  // console.log("post id:", id);
 
   useEffect(() => {
     requestLocationPermissions();
@@ -150,7 +150,7 @@ export default function PostModal() {
       uid: "SeoDnC3eyAbOldb0Mw0ZDnVgm1P2",
     };
 
-    console.log(post);
+    // console.log(post);
     const response = await fetch(
       "https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets.json",
       {
