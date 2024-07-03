@@ -9,8 +9,10 @@ import {
 } from "react-native";
 import { Colors } from "../constants/ThemeVariables";
 import { router } from "expo-router";
+import { averageRating } from "../utils/averageRating";
 
 export default function Post({ toilet }) {
+  // console.log("reviews", reviews);
   return (
     <TouchableOpacity
       onPress={() => router.push(`/toilets/${toilet.id}`)}
@@ -27,12 +29,9 @@ export default function Post({ toilet }) {
 
       <View style={styles.content}>
         <Text style={styles.title}>{toilet?.adrvoisfr}</Text>
-        <Text style={styles.rating}>Rating: ★★★★☆</Text>
+        <Text style={styles.rating}>{averageRating(toilet?.reviews)} ★</Text>
         <Text style={styles.distance}>~300m</Text>
         <Text style={styles.distance}>{toilet?.heureouv}</Text>
-        <Text style={styles.description}>
-          This is a short description of the placeholder bathroom.
-        </Text>
       </View>
     </TouchableOpacity>
   );

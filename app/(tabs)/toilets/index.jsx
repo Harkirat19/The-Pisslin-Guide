@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [toilets, setToilets] = useState([]);
+  const [reviews, setReviews] = useState([]);
   useEffect(() => {
     getToilets();
   }, []);
@@ -14,15 +15,39 @@ export default function Home() {
       "https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets.json"
     );
     const data = await response.json();
-    const toiletsArray = Object.keys(data).map((key) => {
-      return {
-        id: key,
-        ...data[key],
-      };
-    });
-    toiletsArray.sort((a, b) => b.createdAt - a.createdAt);
+    const toiletsArray = await Promise.all(
+      Object.keys(data).map(async (key) => {
+        const toilet = {
+          id: key,
+          ...data[key],
+        };
+        // Fetch reviews for each toilet
+        const reviewsResponse = await fetch(
+          `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets/${key}/reviews.json`
+        );
+        const reviewsData = await reviewsResponse.json();
+        const reviewsArray = reviewsData
+          ? Object.keys(reviewsData).map((reviewKey) => ({
+              ...reviewsData[reviewKey],
+              id: reviewKey,
+              toiletId: key, // Associate each review with its toilet
+            }))
+          : [];
+        return {
+          ...toilet,
+          reviews: reviewsArray,
+        };
+      })
+    );
+    // Flatten the reviews from all toilets into a single array
+    const allReviews = toiletsArray.reduce(
+      (acc, toilet) => [...acc, ...toilet.reviews],
+      []
+    );
     setToilets(toiletsArray);
+    setReviews(allReviews);
   }
+  console.log("all reve", reviews);
 
   return (
     <View style={styles.container}>
@@ -34,7 +59,7 @@ export default function Home() {
       />
       <FlatList
         data={toilets}
-        renderItem={({ item }) => <Post toilet={item} />}
+        renderItem={({ item }) => <Post key={item.id} toilet={item} />}
         keyExtractor={(item) => item.id}
       />
     </View>

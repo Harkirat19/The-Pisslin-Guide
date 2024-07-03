@@ -19,10 +19,10 @@ import { useEffect } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
 import * as Location from "expo-location";
 import { Colors } from "@/constants/ThemeVariables";
-import { auth } from "@/firebase-config";
-import { Rating } from "react-native-ratings";
 import Review from "../../../components/Review";
 import StyledButton from "../../../components/StyledButton";
+import { RefreshControl } from "react-native-web";
+import { averageRating } from "../../../utils/averageRating";
 export default function ToiletDetails() {
   const { id } = useLocalSearchParams();
   const [toilet, setToilet] = useState({});
@@ -46,7 +46,6 @@ export default function ToiletDetails() {
     data.id = id;
     setToilet(data);
   }
-  console.log(toilet);
   async function getReviews() {
     const response = await fetch(
       `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets/${id}/reviews.json`
@@ -107,7 +106,7 @@ export default function ToiletDetails() {
       <View style={styles.textContainter}>
         <Text style={styles.title}>{toilet?.adrvoisfr}</Text>
         <Text>{toilet?.typtoil}</Text>
-        <Text style={styles.rating}>Rating: ★★★★☆</Text>
+        <Text style={styles.rating}>{averageRating(reviews)} ★</Text>
         <View style={styles.iconsContainer}>
           <View style={styles.iconsText}>
             <Image
@@ -146,7 +145,7 @@ export default function ToiletDetails() {
             latitude: toilet?.wgs84_lalo?.lat,
             longitude: toilet?.wgs84_lalo?.lon,
           }}
-        ></Marker>
+        />
       </MapView>
 
       <View style={styles.buttonContainer}>
@@ -154,11 +153,12 @@ export default function ToiletDetails() {
         <StyledButton
           text="Add review"
           style="primary"
-          onPress={() => router.push("/add-review")}
+          onPress={() => router.push(`/add-review/${id}`)}
         />
       </View>
+
       {reviews.map((review) => (
-        <Review review={review} />
+        <Review key={review.id} review={review} />
       ))}
     </ScrollView>
   );
@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
+    padding: 20,
   },
   image: {
     display: "flex",
@@ -203,7 +204,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginVertical: 8,
     textAlign: "center",
-    padding: 10,
   },
   map: {
     height: 300,
@@ -257,5 +257,10 @@ const styles = StyleSheet.create({
     color: "#3f3f3f",
     marginBottom: 5,
     fontSize: 10,
+  },
+  rating: {
+    marginTop: 5,
+    fontSize: 16,
+    color: Colors.text,
   },
 });

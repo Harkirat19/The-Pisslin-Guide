@@ -13,11 +13,14 @@ import {
   View,
 } from "react-native";
 import { Colors } from "@/constants/ThemeVariables";
+
 export default function EditProfileModal() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [mail, setMail] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(
+    "https://cederdorff.com/race/images/placeholder-image.webp"
+  );
 
   // url to fetch (get and put) user data from Firebase Realtime Database
   const url = `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/users/${auth.currentUser?.uid}.json`;
@@ -52,6 +55,32 @@ export default function EditProfileModal() {
       const data = await response.json();
       router.replace("/profile");
       console.log("User data: ", data);
+    }
+  }
+
+  async function chooseImage(type) {
+    let result;
+
+    if (type === "camera") {
+      await requestCameraPermission();
+      result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        base64: true,
+        allowsEditing: true,
+        quality: 0.3,
+      });
+    } else {
+      result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        base64: true,
+        allowsEditing: true,
+        quality: 0.3,
+      });
+    }
+
+    if (!result.canceled) {
+      const base64 = "data:image/jpeg;base64," + result.assets[0].base64;
+      setImage(base64);
     }
   }
   return (
