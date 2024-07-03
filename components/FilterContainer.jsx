@@ -20,14 +20,13 @@ export default function FilterContainer() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.background,
     padding: 15,
     zIndex: 5,
   },
   title: {
     textAlign: "center",
     fontSize: FontSizes.large,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
-
 });

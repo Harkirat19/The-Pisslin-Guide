@@ -7,13 +7,13 @@ import {
   Image,
   ScrollView,
 } from "react-native";
+import { Colors } from "@/constants/ThemeVariables";
 import { Text, View } from "@/components/Themed";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import StyledButton from "@/components/StyledButton";
 import * as Location from "expo-location";
 import * as ImagePicker from "expo-image-picker";
 import { useActionSheet } from "@expo/react-native-action-sheet";
-import { AirbnbRating } from "react-native-ratings";
 
 export default function PostModal() {
   const [location, setLocation] = useState({});
@@ -172,19 +172,31 @@ export default function PostModal() {
     <ScrollView
       automaticallyAdjustKeyboardInsets={true}
       contentContainerStyle={styles.container}
+      style={styles.root}
     >
       <Stack.Screen
         options={{
           title: "Create Post",
+          headerTitleStyle: {
+            color: Colors.background,
+            marginLeft: 0,
+            fontWeight: "bold",
+            fontSize: 21.5,
+          },
+
           headerLeft: () => (
             <Button
               title="Cancel"
               onPress={() => router.back()}
-              color="white"
+              color={Colors.background}
             />
           ),
           headerRight: () => (
-            <Button title="Create" onPress={handleCreatePost} color="white" />
+            <Button
+              title="Create"
+              onPress={handleCreatePost}
+              color={Colors.background}
+            />
           ),
         }}
       />
@@ -248,30 +260,33 @@ export default function PostModal() {
           />
         </View>
       </View>
-      <View style={styles.createPost}>
-        <StyledButton
-          title={id ? "Update Post" : "Create Post"}
-          onPress={handleSave}
-          color="black"
-        />
+      <View style={styles.buttonContainer}>
+        <StyledButton text="Submit New Toilet" onPress={handleSave} />
       </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  root: {
+    backgroundColor: Colors.background,
+  },
   viewStyle: {
-    backgroundColor: "white",
+    backgroundColor: Colors.background,
   },
-  createPost: {
-    backgroundColor: "white",
-    margin: 20,
+  buttonContainer: {
+    marginBottom: 60,
+    backgroundColor: Colors.background,
+    marginTop: 20,
+    borderRadius: 8,
+    marginHorizontal: 10,
   },
+
   container: {
     // flex: 1,
     margin: 2,
     justifyContent: "space-between",
-    backgroundColor: "white",
+    backgroundColor: Colors.background,
   },
   title: {
     margin: 10,
@@ -297,7 +312,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     marginTop: 0,
     borderStyle: "solid",
-    borderColor: "#f9cc31",
+    borderColor: "black",
     borderWidth: 5,
   },
   location: {
@@ -310,9 +325,9 @@ const styles = StyleSheet.create({
     color: "black",
   },
   placeholder: {
-    backgroundColor: "white",
+    backgroundColor: Colors.yellow,
     borderStyle: "solid",
-    borderColor: "#f9cc31",
+    borderColor: "black",
     borderWidth: 5,
     borderRadius: 15,
     padding: 15,

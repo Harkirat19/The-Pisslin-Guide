@@ -31,16 +31,17 @@ export default function StyledButton({ text, onPress, style }) {
 
 const styles = StyleSheet.create({
   primaryButton: {
-    backgroundColor: Colors.black,
+    backgroundColor: Colors.yellow,
     padding: 10,
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 10,
     borderRadius: 8,
-    borderWidth: 5,
+    borderWidth: 4,
   },
   primaryButtonText: {
     color: "black",
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: "bold",
     textAlign: "center",
   },
   secondaryButton: {

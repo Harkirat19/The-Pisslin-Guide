@@ -6,9 +6,9 @@ import { CheckBox } from "react-native-elements/dist/checkbox/CheckBox";
 import { useState } from "react";
 
 export default function FilterContainer() {
-    const [check1, setCheck1] = useState(false);
-    const [check2, setCheck2] = useState(false);
-     const [value, setValue] = useState(1);
+  const [check1, setCheck1] = useState(false);
+  const [check2, setCheck2] = useState(false);
+  const [value, setValue] = useState(1);
 
   return (
     <View style={styles.container}>
@@ -24,7 +24,7 @@ export default function FilterContainer() {
             thumbStyle={{
               height: 16,
               width: 16,
-              backgroundColor: Colors.background,
+              backgroundColor: Colors.black,
             }}
           />
         </View>
@@ -35,7 +35,7 @@ export default function FilterContainer() {
             thumbStyle={{
               height: 16,
               width: 16,
-              backgroundColor: Colors.background,
+              backgroundColor: Colors.black,
             }}
             minimumValue={1}
             maximumValue={100}
@@ -62,25 +62,25 @@ export default function FilterContainer() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.background,
     paddingLeft: 15,
   },
 
   preferencecontainer: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.background,
     justifyContent: "space-between",
     width: "100%",
-    paddingTop: 10,
+    paddingTop: 15,
   },
 
   preference: {
-    width: "20%",
+    width: "22%",
   },
 
   title: {
-    fontSize: FontSizes.medium,
+    fontSize: FontSizes.large,
     fontWeight: "bold",
   },
 
@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
 
   distancetext: {
     fontSize: FontSizes.small,
-    color: Colors.darkgray,
+    color: Colors.black,
     textAlign: "center",
     marginTop: -10,
-  }
+  },
 });

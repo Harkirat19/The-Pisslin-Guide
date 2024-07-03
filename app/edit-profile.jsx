@@ -6,6 +6,7 @@ import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import {
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -83,7 +84,10 @@ export default function EditProfileModal() {
     }
   }
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      automaticallyAdjustKeyboardInsets={true}
+    >
       <TouchableOpacity onPress={chooseImage} style={styles.imageContainer}>
         <Image
           style={styles.image}
@@ -100,6 +104,7 @@ export default function EditProfileModal() {
           onChangeText={setName}
           value={name}
           placeholder="Enter Your First Name"
+          placeholderTextColor="gray"
           autoCapitalize="none"
         />
       </View>
@@ -110,6 +115,7 @@ export default function EditProfileModal() {
           onChangeText={setSurname}
           value={surname}
           placeholder="Enter your Last Name"
+          placeholderTextColor="gray"
           autoCapitalize="none"
         />
       </View>
@@ -117,7 +123,7 @@ export default function EditProfileModal() {
       <View style={styles.buttonContainer}>
         <StyledButton text="Save" onPress={handleSaveUser} />
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
