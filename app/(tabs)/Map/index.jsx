@@ -68,7 +68,7 @@ export default function MapTab() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} pointerEvents="box-none">
       <TouchableOpacity
         style={styles.filterCollapsed}
         onPress={() => setFilterVisible(!filterVisible)}
@@ -159,6 +159,7 @@ export default function MapTab() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: "relative",
   },
   calloutContainer: {
     backgroundColor: "#f9cc31",
@@ -193,7 +194,7 @@ const styles = StyleSheet.create({
   filterCollapsed: {
     position: "absolute",
     top: 10,
-    right: 70,
+    right: 10,
     padding: 10,
     backgroundColor: Colors.background,
     borderRadius: 5,
@@ -204,15 +205,17 @@ const styles = StyleSheet.create({
     elevation: 3,
     zIndex: 1,
   },
+
   filterComponent: {
     position: "absolute",
-    borderRadius: 5,
-    top: 62,
+    top: 50,
+    padding: 10,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 3,
     zIndex: 1,
+    pointerEvents: "auto",
   },
 });
