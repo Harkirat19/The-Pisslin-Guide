@@ -80,7 +80,7 @@ export default function MapTab() {
       <MapView
         style={styles.map}
         initialRegion={location}
-        showsUserLocation={true}
+        showsUserLocation={false}
         followsUserLocation={true}
       >
         {location && (
