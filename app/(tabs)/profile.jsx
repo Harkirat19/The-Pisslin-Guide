@@ -1,25 +1,27 @@
-import StyledButton from "@/components/StyledButton";
 import { auth } from "@/firebase-config";
 import { Stack, router } from "expo-router";
 import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
+import Icon from "react-native-vector-icons/MaterialIcons"; // Import the icon component
+
 import {
   Button,
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
 } from "react-native";
-import { Colors } from "../../constants/ThemeVariables";
+import { Colors, FontSizes } from "../../constants/ThemeVariables";
+
 export default function Profile() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [mail, setMail] = useState("");
   const [image, setImage] = useState("");
 
-  // url to fetch (get and put) user data from Firebase Realtime Database
+  // URL to fetch (get and put) user data from Firebase Realtime Database
   const url = `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/users/${auth.currentUser?.uid}.json`;
 
   useEffect(() => {
@@ -34,12 +36,12 @@ export default function Profile() {
     if (userData) {
       // if userData exists set states with values from userData (data from Firebase Realtime Database)
       setName(userData?.name); // set name to the value of the name property from userData
-      setSurname(userData?.surname); // set name to the value of the name property from userData
-      setImage(userData?.image); // set image to the value of the image property from userData
+      setSurname(userData?.surname); // set surname to the value of the surname property from userData
+      setImage(userData?.image); // set image to the value of the image property from userData;
     }
   }
 
-  // sign out the user and redirect to the sign-in screen
+  // Sign out the user and redirect to the sign-in screen
   async function handleSignOut() {
     await signOut(auth);
     router.replace("/sign-in");
@@ -62,6 +64,16 @@ export default function Profile() {
         }}
       />
       <View>
+        {/* Edit button */}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push("/edit-profile")}
+          >
+            <Icon name="edit" size={50} color="white" />
+          </TouchableOpacity>
+        </View>
+
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
@@ -75,13 +87,9 @@ export default function Profile() {
         <Text style={styles.label}>
           {name} {surname}
         </Text>
-        <View style={styles.buttonContainer}>
-          <StyledButton
-            text="Edit profile"
-            style="primary"
-            onPress={() => router.push("/edit-profile")}
-          />
-        </View>
+        <Text style={styles.labelsmall}>
+          {mail}
+        </Text>
       </View>
     </ScrollView>
   );
@@ -93,32 +101,54 @@ const styles = StyleSheet.create({
     padding: 24,
     backgroundColor: Colors.background,
   },
+
   label: {
-    color: Colors.black,
+    color: Colors.text,
     marginTop: 30,
     marginBottom: 5,
-    fontSize: 20,
+    fontSize: FontSizes.large,
     fontWeight: "bold",
     textAlign: "center",
   },
-  input: {
-    height: 50,
-    padding: 10,
-    backgroundColor: "white",
-    borderRadius: 6,
+
+  labelsmall: {
+    color: Colors.text,
+    marginTop: 10,
+    marginBottom: 5,
+    fontSize: FontSizes.medium,
+    fontWeight: "bold",
+    textAlign: "center",
   },
+
   imageContainer: {
-    borderWidth: 5,
-    borderColor: Colors.pink,
     borderRadius: 200,
-    padding: 0,
+    padding: 0, // Add box shadow
+    shadowColor: "#000", // Shadow color
+    shadowOffset: { width: 0, height: 2 }, // Shadow offset
+    shadowOpacity: 0.2, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
   },
+
   image: {
     aspectRatio: 1,
     borderRadius: 200,
   },
+
+  button: {
+    padding: 7,
+    backgroundColor: Colors.gray,
+    borderRadius: 8,
+  },
+
   buttonContainer: {
-    marginBottom: 50,
-    marginTop: 20,
+    top: 270,
+    left: 40,
+    position: "absolute",
+    zIndex: 5,
+    shadowColor: "#000", // Shadow color
+    shadowOffset: { width: 0, height: 2 }, // Shadow offset
+    shadowOpacity: 0.2, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
+    elevation: 3, // Required for Android
   },
 });

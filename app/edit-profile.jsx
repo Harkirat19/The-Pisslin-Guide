@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Colors } from "@/constants/ThemeVariables";
+import { Colors, FontSizes } from "@/constants/ThemeVariables";
 
 export default function EditProfileModal() {
   const [name, setName] = useState("");
@@ -94,24 +94,28 @@ export default function EditProfileModal() {
           }}
         />
       </TouchableOpacity>
-      <Text style={styles.label}>Name</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={setName}
-        value={name}
-        placeholder="Type your name"
-        autoCapitalize="none"
-      />
-      <Text style={styles.label}>Surname</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={setSurname}
-        value={surname}
-        placeholder="Type your name"
-        autoCapitalize="none"
-      />
+      <View style={styles.input}>
+        <Text style={styles.label}>Name</Text>
+        <TextInput
+          onChangeText={setName}
+          value={name}
+          placeholder="Type your first name"
+          autoCapitalize="none"
+        />
+      </View>
+
+      <View style={styles.input}>
+        <Text style={styles.label}>Surname</Text>
+        <TextInput
+          onChangeText={setSurname}
+          value={surname}
+          placeholder="Type your lastname"
+          autoCapitalize="none"
+        />
+      </View>
+
       <View style={styles.buttonContainer}>
-        <StyledButton text="Save" style="primary" onPress={handleSaveUser} />
+        <StyledButton text="Save" onPress={handleSaveUser} />
       </View>
     </View>
   );
@@ -123,30 +127,35 @@ const styles = StyleSheet.create({
     padding: 24,
     backgroundColor: Colors.background,
   },
+
   label: {
-    color: Colors.text,
-    marginTop: 30,
-    marginBottom: 5,
+    color: Colors.darkgray,
+    fontSize: FontSizes.small,
   },
+
   input: {
-    height: 50,
-    padding: 10,
+    paddingLeft: 10,
+    paddingTop: 5,
+    paddingBottom: 5,
+    marginTop: 10,
     backgroundColor: "white",
-    borderRadius: 6,
-    borderColor: Colors.pink,
-    borderWidth: 4,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: Colors.darkgray
   },
+
   imageContainer: {
-    borderWidth: 5,
-    borderColor: Colors.pink,
     borderRadius: 200,
+    padding: 0, // Add box shadow
+    shadowColor: "#000", // Shadow color
+    shadowOffset: { width: 0, height: 2 }, // Shadow offset
+    shadowOpacity: 0.2, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
   },
+
   image: {
     aspectRatio: 1,
     borderRadius: 200,
   },
-  buttonContainer: {
-    marginBottom: 50,
-    marginTop: 20,
-  },
+
 });
