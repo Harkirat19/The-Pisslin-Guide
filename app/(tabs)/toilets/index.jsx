@@ -2,6 +2,7 @@ import { StyleSheet, ScrollView, Text, View, FlatList } from "react-native";
 import Post from "../../../components/Post";
 import { Colors } from "@/constants/ThemeVariables";
 import { useEffect, useState } from "react";
+import FilterContainer from "@/components/FilterContainer";
 
 export default function Home() {
   const [toilets, setToilets] = useState([]);
@@ -51,7 +52,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>The Pisslin' Guide</Text>
+      <FilterContainer></FilterContainer>
       <View
         style={styles.separator}
         lightColor="#eee"
