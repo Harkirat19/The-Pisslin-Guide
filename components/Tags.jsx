@@ -10,7 +10,7 @@ export default function Tags({ activeTags, inactiveTags }) {
       <ScrollView
         style={styles.tagsContainer}
         horizontal
-        showsHorizontalScrollIndicator={true}
+        showsHorizontalScrollIndicator={false}
       >
         {activeTags.map((tag, index) => (
           <View key={index} style={styles.tag}>
