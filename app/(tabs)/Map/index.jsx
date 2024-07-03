@@ -136,7 +136,7 @@ export default function MapTab() {
               </Marker>
             );
           } else {
-            console.error("Invalid coordinates for toilet:", toilet);
+            //console.error("Invalid coordinates for toilet:", toilet);
             return null;
           }
         })}
