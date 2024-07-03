@@ -43,9 +43,10 @@ export default function TabLayout() {
       })}
     >
       <Tabs.Screen
-        name="index"
+        name="toilets"
         options={{
           title: "Home",
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Button

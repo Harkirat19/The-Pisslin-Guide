@@ -6,6 +6,7 @@ import {
   secondary,
   tintColorDark,
 } from "../constants/ThemeVariables";
+import { Colors } from "../constants/ThemeVariables";
 
 export default function StyledButton({ text, onPress, style }) {
   return (
@@ -30,13 +31,12 @@ export default function StyledButton({ text, onPress, style }) {
 
 const styles = StyleSheet.create({
   primaryButton: {
-    backgroundColor: primary,
+    backgroundColor: Colors.black,
     padding: 10,
     marginTop: 20,
     marginBottom: 10,
-    borderRadius: borderRadius,
-    borderColor: primary,
-    borderWidth: borderWidth,
+    borderRadius: 8,
+    borderWidth: 2,
   },
   primaryButtonText: {
     color: "black",
@@ -44,15 +44,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   secondaryButton: {
-    backgroundColor: secondary,
+    backgroundColor: Colors.yellow,
     padding: 10,
     marginTop: 10,
-    borderRadius: borderRadius,
-    borderColor: primary,
-    borderWidth: borderWidth,
+    borderRadius: 8,
+    borderWidth: 2,
   },
   secondaryButtonText: {
-    color: tintColorDark,
+    color: "black",
     fontSize: 18,
     textAlign: "center",
   },

@@ -14,6 +14,7 @@ import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { useColorScheme } from "@/components/useColorScheme";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase-config";
+import Colors from "@/constants/Colors";
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -66,7 +67,37 @@ function RootLayoutNav() {
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+          <Stack.Screen
+            name="edit-profile"
+            title="Edit Profile"
+            options={{
+              presentation: "modal",
+              headerStyle: {
+                backgroundColor: Colors.background,
+                headerTintColor: "black",
+              },
+              headerTintColor: "black",
+              headerTitleStyle: {
+                fontWeight: "bold",
+                textAlign: "center",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="add-review"
+            options={{
+              presentation: "modal",
+              headerStyle: {
+                backgroundColor: Colors.background,
+                headerTintColor: "black",
+              },
+              headerTintColor: "black",
+              headerTitleStyle: {
+                fontWeight: "bold",
+                textAlign: "center",
+              },
+            }}
+          />
         </Stack>
       </ThemeProvider>
     </ActionSheetProvider>

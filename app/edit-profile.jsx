@@ -13,11 +13,14 @@ import {
   View,
 } from "react-native";
 import { Colors, FontSizes } from "@/constants/ThemeVariables";
+
 export default function EditProfileModal() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [mail, setMail] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(
+    "https://cederdorff.com/race/images/placeholder-image.webp"
+  );
 
   // url to fetch (get and put) user data from Firebase Realtime Database
   const url = `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/users/${auth.currentUser?.uid}.json`;
@@ -39,27 +42,6 @@ export default function EditProfileModal() {
     }
   }
 
-  // sign out the user and redirect to the sign-in screen
-  async function handleSignOut() {
-    await signOut(auth);
-    router.replace("/sign-in");
-  }
-  // choose an image from the device gallery
-  async function chooseImage() {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      base64: true,
-      allowsEditing: true,
-      quality: 0.3,
-    });
-
-    // if the user didn't cancel the image picker, set the image state with the base64 image
-    if (!result.canceled) {
-      const base64 = "data:image/jpeg;base64," + result.assets[0].base64;
-      setImage(base64);
-    }
-  }
-
   async function handleSaveUser() {
     const userToUpdate = { name: name, mail: mail, surname, image }; // create an object to hold the user to update properties
 
@@ -72,7 +54,32 @@ export default function EditProfileModal() {
     if (response.ok) {
       const data = await response.json();
       router.replace("/profile");
-      console.log("User data: ", data);
+    }
+  }
+
+  async function chooseImage(type) {
+    let result;
+
+    if (type === "camera") {
+      await requestCameraPermission();
+      result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        base64: true,
+        allowsEditing: true,
+        quality: 0.3,
+      });
+    } else {
+      result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        base64: true,
+        allowsEditing: true,
+        quality: 0.3,
+      });
+    }
+
+    if (!result.canceled) {
+      const base64 = "data:image/jpeg;base64," + result.assets[0].base64;
+      setImage(base64);
     }
   }
   return (
