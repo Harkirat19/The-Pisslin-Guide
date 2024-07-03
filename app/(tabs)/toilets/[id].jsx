@@ -21,14 +21,16 @@ import * as Location from "expo-location";
 import { Colors } from "@/constants/ThemeVariables";
 import Review from "../../../components/Review";
 import StyledButton from "../../../components/StyledButton";
-import { RefreshControl } from "react-native-web";
 import { averageRating } from "../../../utils/averageRating";
+import toiletSign from "@/assets/images/toiletSign.png";
+import locationIcon from "@/assets/images/locationIcon.png";
+
 export default function ToiletDetails() {
   const { id } = useLocalSearchParams();
   const [toilet, setToilet] = useState({});
   const [location, setLocation] = useState({});
   const [reviews, setReviews] = useState([]);
-
+  const [heading, setHeading] = useState(null);
   useEffect(() => {
     getToilet();
   }, []);
@@ -138,14 +140,40 @@ export default function ToiletDetails() {
           latitudeDelta: 0.0922, // Adjust as needed for zoom level
           longitudeDelta: 0.0421, // Adjust as needed for zoom level
         }}
-        showsUserLocation={true}
+        showsUserLocation={false}
       >
         <Marker
+          coordinate={location}
+          anchor={{ x: 0.5, y: 0.5 }}
+          flat={true}
+          rotation={heading}
+          title="You are here!"
+        >
+          <Image
+            source={locationIcon}
+            style={{
+              width: 40,
+              height: 40,
+              transform: [{ rotate: `${heading}deg` }],
+            }}
+          />
+        </Marker>
+        <Marker
+          key={toilet.id}
           coordinate={{
             latitude: toilet?.wgs84_lalo?.lat,
             longitude: toilet?.wgs84_lalo?.lon,
           }}
-        />
+        >
+          <Image
+            source={toiletSign}
+            style={{
+              width: 50,
+              height: 50,
+              resizeMode: "contain",
+            }}
+          />
+        </Marker>
       </MapView>
 
       <View style={styles.buttonContainer}>

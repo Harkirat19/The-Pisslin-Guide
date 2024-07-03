@@ -46,6 +46,7 @@ export default function TabLayout() {
         name="toilets"
         options={{
           title: "Home",
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Button
