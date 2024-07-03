@@ -48,22 +48,17 @@ export default function Home() {
     setToilets(toiletsArray);
     setReviews(allReviews);
   }
-  console.log("all reve", reviews);
+  //console.log("all reve", reviews);
 
   return (
-    <View style={styles.container}>
-      <FilterContainer></FilterContainer>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
+    <ScrollView style={styles.container}>
+      <FilterContainer />
       <FlatList
         data={toilets}
         renderItem={({ item }) => <Post key={item.id} toilet={item} />}
         keyExtractor={(item) => item.id}
       />
-    </View>
+    </ScrollView>
   );
 }
 
