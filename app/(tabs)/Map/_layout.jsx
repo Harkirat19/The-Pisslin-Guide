@@ -17,7 +17,7 @@ export default function MapLayout() {
         },
       }}
     >
-      <Stack.Screen name="index" options={{ title: "Map" }} />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
     </Stack>
   );
 }
