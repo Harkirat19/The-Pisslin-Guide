@@ -1,19 +1,19 @@
 import { StyleSheet, ScrollView, Text, View } from "react-native";
 import Post from "../../components/Post";
 import { Colors } from "@/constants/ThemeVariables";
-import FilterContainer from "@/components/FilterContainer"
+import FilterContainer from "@/components/FilterContainer";
 
 export default function Home() {
   return (
-      <ScrollView style={styles.container}>
-        <FilterContainer></FilterContainer>
-        <View
-          style={styles.separator}
-          lightColor="#eee"
-          darkColor="rgba(255,255,255,0.1)"
-        />
-        <Post></Post>
-      </ScrollView>
+    <ScrollView style={styles.container}>
+      <FilterContainer></FilterContainer>
+      <View
+        style={styles.separator}
+        lightColor="#eee"
+        darkColor="rgba(255,255,255,0.1)"
+      />
+      <Post></Post>
+    </ScrollView>
   );
 }
 
