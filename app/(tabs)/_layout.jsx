@@ -2,10 +2,12 @@
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Link, Tabs } from "expo-router";
-import { Button } from "react-native-elements";
+import { Button } from "react-native";
 import { Colors } from "@/constants/ThemeVariables";
 import { Pressable, StyleSheet, useColorScheme } from "react-native";
 import { router } from "expo-router";
+import { Text, TouchableOpacity } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props) {
@@ -36,7 +38,7 @@ export default function TabLayout() {
           );
         },
         tabBarStyle: {
-          backgroundColor: Colors.darkgray,
+          backgroundColor: Colors.black,
         },
         tabBarActiveTintColor: Colors.yellow,
         tabBarInactiveTintColor: Colors.background,
@@ -45,15 +47,26 @@ export default function TabLayout() {
       <Tabs.Screen
         name="toilets"
         options={{
-          title: "Home",
-          headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          title: "Your  Pisslin'  Guide 🚽",
+          tabBarLabel: "Home",
+          headerTitleAlign: "left",
+          headerTitleStyle: {
+            color: Colors.background,
+            marginLeft: 0,
+            fontWeight: "bold",
+            fontSize: 21.5,
+          },
+          headerShown: true,
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="home" color={color} size={24} />
+          ),
           headerRight: () => (
-            <Button
-              title="Add New"
+            <TouchableOpacity
+              style={styles.button}
               onPress={() => router.push("postToilet")}
-              color="white"
-            />
+            >
+              <Text style={styles.buttonText}>Add Toilet</Text>
+            </TouchableOpacity>
           ),
         }}
       />
@@ -61,6 +74,12 @@ export default function TabLayout() {
         name="Map"
         options={{
           title: "Map",
+          headerTitleStyle: {
+            color: Colors.background,
+            marginLeft: 0,
+            fontWeight: "bold",
+            fontSize: 21.5,
+          },
           tabBarIcon: ({ color }) => <TabBarIcon name="map" color={color} />,
         }}
       />
@@ -68,9 +87,29 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: "Profile",
+          headerTitleStyle: {
+            color: Colors.background,
+            marginLeft: 0,
+            fontWeight: "bold",
+            fontSize: 21.5,
+          },
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
       />
     </Tabs>
   );
 }
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: Colors.background,
+    padding: 10,
+    borderRadius: 8,
+    borderWidth: 4,
+    borderColor: "black",
+  },
+  buttonText: {
+    color: "black",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+});

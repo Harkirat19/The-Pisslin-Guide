@@ -98,6 +98,7 @@ export default function AddReviewModal() {
         onChangeText={setReviewText}
         value={reviewText}
         placeholder="Write a review..."
+        placeholderTextColor="gray"
         multiline
       />
       <Rating
@@ -107,9 +108,10 @@ export default function AddReviewModal() {
           padding: 10,
           fill: "black",
           borderRadius: 10,
-          borderColor: Colors.pink,
-          borderWidth: 4,
           marginTop: 20,
+          borderStyle: "solid",
+          borderColor: "black",
+          borderWidth: 5,
         }}
         startingValue={rating}
         imageSize={30}
@@ -127,11 +129,9 @@ export default function AddReviewModal() {
           }}
         />
       </TouchableOpacity>
-      <StyledButton
-        text="Submit Review"
-        onPress={submitReview}
-        style="primary"
-      />
+      <View style={styles.buttonContainer}>
+        <StyledButton text="Submit Review" onPress={submitReview} />
+      </View>
     </ScrollView>
   );
 }
@@ -154,11 +154,13 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 150,
+    marginTop: 25,
     padding: 10,
     backgroundColor: "white",
     borderRadius: 10,
-    borderColor: Colors.pink,
-    borderWidth: 4,
+    borderStyle: "solid",
+    borderColor: "black",
+    borderWidth: 5,
   },
   imageContainer: {
     borderColor: "none",
@@ -167,14 +169,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
+    borderStyle: "solid",
+    borderColor: "black",
+    borderWidth: 5,
   },
   image: {
-    aspectRatio: 1,
+    aspectRatio: 1.65,
     height: 200,
-    resizeMode: "cover",
+    resizeMode: "stretch",
   },
   buttonContainer: {
     marginBottom: 50,
-    marginTop: 20,
+    marginTop: 25,
   },
 });
