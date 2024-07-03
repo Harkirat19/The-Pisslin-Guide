@@ -69,17 +69,14 @@ function RootLayoutNav() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen
             name="edit-profile"
-            title="Edit Profile"
             options={{
+              title: "Edit Profile",
               presentation: "modal",
-              headerStyle: {
-                backgroundColor: Colors.background,
-                headerTintColor: "black",
-              },
-              headerTintColor: "white",
               headerTitleStyle: {
+                color: "#f9cc31",
+                marginLeft: 0,
                 fontWeight: "bold",
-                textAlign: "center",
+                fontSize: 21.5,
               },
             }}
           />

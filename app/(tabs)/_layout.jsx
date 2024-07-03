@@ -74,6 +74,12 @@ export default function TabLayout() {
         name="Map"
         options={{
           title: "Map",
+          headerTitleStyle: {
+            color: Colors.background,
+            marginLeft: 0,
+            fontWeight: "bold",
+            fontSize: 21.5,
+          },
           tabBarIcon: ({ color }) => <TabBarIcon name="map" color={color} />,
         }}
       />
@@ -81,6 +87,12 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: "Profile",
+          headerTitleStyle: {
+            color: Colors.background,
+            marginLeft: 0,
+            fontWeight: "bold",
+            fontSize: 21.5,
+          },
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
       />
