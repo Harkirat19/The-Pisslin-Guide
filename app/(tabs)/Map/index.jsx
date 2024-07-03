@@ -122,8 +122,9 @@ export default function MapTab() {
                   latitude: latitude,
                   longitude: longitude,
                 }}
-                title={toilet.typeeng}
-                description={toilet.adrvoisfr}
+                // title={toilet.specloc}
+                // description={toilet.adrvoisfr}
+                // source={{ uri: toilet.image }}
               >
                 <Image
                   source={toiletSign}
@@ -133,6 +134,16 @@ export default function MapTab() {
                     resizeMode: "contain",
                   }}
                 />
+                <Callout tooltip>
+                  <View style={styles.calloutContainer}>
+                    <Text style={styles.calloutTitle}>{toilet.specloc}</Text>
+                    <Text style={styles.calloutText}>{toilet.adrvoisfr}</Text>
+                    <Image
+                      source={{ uri: toilet.image }}
+                      style={styles.calloutImage}
+                    />
+                  </View>
+                </Callout>
               </Marker>
             );
           } else {
@@ -148,6 +159,32 @@ export default function MapTab() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  calloutContainer: {
+    backgroundColor: "#f9cc31",
+    borderRadius: 6,
+    borderColor: "black",
+    borderWidth: 0.5,
+    padding: 10,
+    width: 150,
+    height: "auto",
+  },
+  calloutTitle: {
+    color: "#333",
+    fontSize: 14,
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
+  calloutText: {
+    color: "#333",
+    fontSize: 12,
+    marginBottom: 5,
+  },
+  calloutImage: {
+    width: "100%",
+    height: 70,
+    borderRadius: 6,
+    alignItems: "center",
   },
   map: {
     width: "100%",
