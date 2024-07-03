@@ -17,7 +17,7 @@ export default function SignIn() {
         // User is signed in
         const user = userCredential.user; // User
         console.log("Signed in as", user.email);
-        router.replace("/"); // Redirect to home
+        router.replace("/toilets"); // Redirect to home
       })
       .catch((error) => {
         // Handle errors
