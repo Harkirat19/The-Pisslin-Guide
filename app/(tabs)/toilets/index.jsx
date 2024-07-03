@@ -23,6 +23,7 @@ export default function Home() {
     toiletsArray.sort((a, b) => b.createdAt - a.createdAt);
     setToilets(toiletsArray);
   }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>The Pisslin' Guide</Text>

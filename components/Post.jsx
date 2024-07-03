@@ -19,7 +19,9 @@ export default function Post({ toilet }) {
       <Image
         style={styles.image}
         source={{
-          uri: "http://cederdorff.com/race/images/placeholder-image.webp",
+          uri: toilet?.image
+            ? toilet?.image
+            : "http://cederdorff.com/race/images/placeholder-image.webp",
         }}
       />
 
