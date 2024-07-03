@@ -10,7 +10,7 @@ export default function FilterContainer() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>The Pisslin' Guide</Text>
+      {/* <Text style={styles.title}>The Pisslin' Guide</Text> */}
       <Tags activeTags={activeTags} inactiveTags={inactiveTags} />
       <Preferences />
     </View>
@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.gray,
     padding: 15,
+    zIndex: 5,
   },
   title: {
     textAlign: "center",

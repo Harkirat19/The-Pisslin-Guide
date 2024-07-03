@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView, Text, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import Post from "../../../components/Post";
 import { Colors } from "@/constants/ThemeVariables";
 import { useEffect, useState } from "react";
@@ -48,20 +48,17 @@ export default function Home() {
     setToilets(toiletsArray);
     setReviews(allReviews);
   }
-  console.log("all reve", reviews);
 
   return (
     <View style={styles.container}>
-      <FilterContainer></FilterContainer>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
+      <View style={styles.filterContainer}>
+        <FilterContainer />
+      </View>
       <FlatList
         data={toilets}
         renderItem={({ item }) => <Post key={item.id} toilet={item} />}
         keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContent}
       />
     </View>
   );
@@ -72,14 +69,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: Colors.text,
+
+  filterContainer: {
+    position: "absolute",
+    top: 0,
+    width: "100%",
+    zIndex: 1, // Ensure the filter stays on top
+    backgroundColor: Colors.background, // Match the background color
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
+  listContent: {
+    paddingTop: 220, // Adjust this value based on the height of your FilterContainer
   },
 });
