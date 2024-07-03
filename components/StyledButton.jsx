@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
     borderRadius: 8,
-    borderWidth: 2,
+    borderWidth: 5,
   },
   primaryButtonText: {
     color: "black",
@@ -48,11 +48,12 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 10,
     borderRadius: 8,
-    borderWidth: 2,
+    borderWidth: 4,
   },
   secondaryButtonText: {
     color: "black",
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: "bold",
     textAlign: "center",
   },
 });

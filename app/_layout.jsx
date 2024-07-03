@@ -14,7 +14,7 @@ import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { useColorScheme } from "@/components/useColorScheme";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase-config";
-import Colors from "@/constants/Colors";
+import Colors from "@/constants/ThemeVariables";
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -76,7 +76,7 @@ function RootLayoutNav() {
                 backgroundColor: Colors.background,
                 headerTintColor: "black",
               },
-              headerTintColor: "black",
+              headerTintColor: "white",
               headerTitleStyle: {
                 fontWeight: "bold",
                 textAlign: "center",

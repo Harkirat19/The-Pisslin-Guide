@@ -57,7 +57,7 @@ export default function Profile() {
           headerRight: () => (
             <Button
               title="Sign Out"
-              color={Colors.primary}
+              color={Colors.background}
               onPress={handleSignOut}
             />
           ),
@@ -70,7 +70,7 @@ export default function Profile() {
             style={styles.button}
             onPress={() => router.push("/edit-profile")}
           >
-            <Icon name="edit" size={50} color="white" />
+            <Icon name="edit" size={50} color={Colors.background} />
           </TouchableOpacity>
         </View>
 
@@ -87,9 +87,7 @@ export default function Profile() {
         <Text style={styles.label}>
           {name} {surname}
         </Text>
-        <Text style={styles.labelsmall}>
-          {mail}
-        </Text>
+        <Text style={styles.labelsmall}>{mail}</Text>
       </View>
     </ScrollView>
   );
@@ -124,9 +122,9 @@ const styles = StyleSheet.create({
     borderRadius: 200,
     padding: 0, // Add box shadow
     shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 0, height: 2 }, // Shadow offset
-    shadowOpacity: 0.2, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
+    shadowOffset: { width: 0, height: 5 }, // Shadow offset
+    shadowOpacity: 12, // Shadow opacity
+    shadowRadius: 14, // Shadow radius
   },
 
   image: {
@@ -136,7 +134,7 @@ const styles = StyleSheet.create({
 
   button: {
     padding: 7,
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.black,
     borderRadius: 8,
   },
 
@@ -146,9 +144,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     zIndex: 5,
     shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 0, height: 2 }, // Shadow offset
-    shadowOpacity: 0.2, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
+    shadowOffset: { width: 0, height: 5 }, // Shadow offset
+    shadowOpacity: 12, // Shadow opacity
+    shadowRadius: 14, // Shadow radius
     elevation: 3, // Required for Android
   },
 });

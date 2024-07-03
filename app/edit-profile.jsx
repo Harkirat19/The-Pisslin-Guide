@@ -99,7 +99,7 @@ export default function EditProfileModal() {
         <TextInput
           onChangeText={setName}
           value={name}
-          placeholder="Type your first name"
+          placeholder="Enter Your First Name"
           autoCapitalize="none"
         />
       </View>
@@ -109,7 +109,7 @@ export default function EditProfileModal() {
         <TextInput
           onChangeText={setSurname}
           value={surname}
-          placeholder="Type your lastname"
+          placeholder="Enter your Last Name"
           autoCapitalize="none"
         />
       </View>
@@ -138,24 +138,27 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 5,
     marginTop: 10,
-    backgroundColor: "white",
+    backgroundColor: Colors.yellow,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: Colors.darkgray
+    borderColor: Colors.black,
   },
 
   imageContainer: {
     borderRadius: 200,
     padding: 0, // Add box shadow
     shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 0, height: 2 }, // Shadow offset
-    shadowOpacity: 0.2, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
+    shadowOffset: { width: 0, height: 5 }, // Shadow offset
+    shadowOpacity: 12, // Shadow opacity
+    shadowRadius: 14, // Shadow radius
+    marginBottom: 60,
   },
 
   image: {
     aspectRatio: 1,
     borderRadius: 200,
   },
-
+  buttonContainer: {
+    marginVertical: 40,
+  },
 });

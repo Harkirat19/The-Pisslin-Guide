@@ -19,7 +19,11 @@ export default function ToiletsLayout() {
     >
       <Stack.Screen
         name="index"
-        options={{ title: "The Pisslin' Guide", headerTitleAlign: "center", headerShown: "false" }}
+        options={{
+          title: "The Pisslin' Guide",
+          headerTitleAlign: "center",
+          headerShown: false,
+        }}
       />
     </Stack>
   );
