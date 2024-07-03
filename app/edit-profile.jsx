@@ -39,27 +39,6 @@ export default function EditProfileModal() {
     }
   }
 
-  // sign out the user and redirect to the sign-in screen
-  async function handleSignOut() {
-    await signOut(auth);
-    router.replace("/sign-in");
-  }
-  // choose an image from the device gallery
-  async function chooseImage() {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      base64: true,
-      allowsEditing: true,
-      quality: 0.3,
-    });
-
-    // if the user didn't cancel the image picker, set the image state with the base64 image
-    if (!result.canceled) {
-      const base64 = "data:image/jpeg;base64," + result.assets[0].base64;
-      setImage(base64);
-    }
-  }
-
   async function handleSaveUser() {
     const userToUpdate = { name: name, mail: mail, surname, image }; // create an object to hold the user to update properties
 
