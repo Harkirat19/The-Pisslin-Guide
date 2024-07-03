@@ -54,7 +54,6 @@ export default function EditProfileModal() {
     if (response.ok) {
       const data = await response.json();
       router.replace("/profile");
-      console.log("User data: ", data);
     }
   }
 

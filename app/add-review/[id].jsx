@@ -14,6 +14,7 @@ import {
 } from "react-native";
 import { Colors } from "@/constants/ThemeVariables";
 import { Rating } from "react-native-ratings";
+import { ScrollView } from "react-native";
 
 export default function AddReviewModal() {
   const [rating, setRating] = useState(3);
@@ -87,7 +88,10 @@ export default function AddReviewModal() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      automaticallyAdjustKeyboardInsets={true}
+    >
       <Text style={styles.headline}>Write Review</Text>
       <TextInput
         style={styles.input}
@@ -128,7 +132,7 @@ export default function AddReviewModal() {
         onPress={submitReview}
         style="primary"
       />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -157,15 +161,17 @@ const styles = StyleSheet.create({
     borderWidth: 4,
   },
   imageContainer: {
-    borderWidth: 5,
-    borderColor: Colors.pink,
-    width: 400,
+    borderColor: "none",
     marginTop: 20,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
   },
   image: {
     aspectRatio: 1,
-    width: 100,
     height: 200,
+    resizeMode: "cover",
   },
   buttonContainer: {
     marginBottom: 50,
