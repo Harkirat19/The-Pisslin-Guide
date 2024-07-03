@@ -90,10 +90,6 @@ export default function Profile() {
         <Text style={styles.labelsmall}>
           {mail}
         </Text>
-
-        <View>
-
-        </View>
       </View>
     </ScrollView>
   );
@@ -105,6 +101,7 @@ const styles = StyleSheet.create({
     padding: 24,
     backgroundColor: Colors.background,
   },
+
   label: {
     color: Colors.text,
     marginTop: 30,
@@ -113,6 +110,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
+
   labelsmall: {
     color: Colors.text,
     marginTop: 10,
@@ -130,6 +128,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2, // Shadow opacity
     shadowRadius: 4, // Shadow radius
   },
+
   image: {
     aspectRatio: 1,
     borderRadius: 200,
@@ -146,7 +145,6 @@ const styles = StyleSheet.create({
     left: 40,
     position: "absolute",
     zIndex: 5,
-    // Add box shadow
     shadowColor: "#000", // Shadow color
     shadowOffset: { width: 0, height: 2 }, // Shadow offset
     shadowOpacity: 0.2, // Shadow opacity

@@ -115,7 +115,7 @@ export default function EditProfileModal() {
       </View>
 
       <View style={styles.buttonContainer}>
-        <StyledButton text="Save" style="primary" onPress={handleSaveUser} />
+        <StyledButton text="Save" onPress={handleSaveUser} />
       </View>
     </View>
   );
@@ -152,13 +152,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2, // Shadow opacity
     shadowRadius: 4, // Shadow radius
   },
+
   image: {
     aspectRatio: 1,
     borderRadius: 200,
   },
 
-  buttonContainer: {
-    marginBottom: 50,
-    marginTop: 20,
-  },
 });
