@@ -7,6 +7,7 @@ import { Colors } from "@/constants/ThemeVariables";
 import FilterContainer from "../../../components/FilterContainer";
 import toiletSign from "@/assets/images/toiletSign.png";
 import locationIcon from "@/assets/images/locationIcon.png";
+import { router } from "expo-router";
 
 export default function MapTab() {
   const [location, setLocation] = useState(null);
@@ -137,7 +138,10 @@ export default function MapTab() {
                     resizeMode: "contain",
                   }}
                 />
-                <Callout tooltip>
+                <Callout
+                  tooltip
+                  onPress={() => router.push(`/Map/${toilet.id}`)}
+                >
                   <View style={styles.calloutContainer}>
                     <Text style={styles.calloutTitle}>{toilet.specloc}</Text>
                     <Text style={styles.calloutText}>{toilet.adrvoisfr}</Text>
