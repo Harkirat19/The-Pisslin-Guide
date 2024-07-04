@@ -101,20 +101,20 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    color: Colors.text,
+    color: Colors.black,
     marginTop: 30,
     marginBottom: 5,
-    fontSize: FontSizes.large,
+    fontSize: 27,
     fontWeight: "bold",
     textAlign: "center",
   },
 
   labelsmall: {
-    color: Colors.text,
+    color: Colors.black,
     marginTop: 10,
     marginBottom: 5,
-    fontSize: FontSizes.medium,
-    fontWeight: "bold",
+    fontSize: 17,
+    // fontWeight: "bold",
     textAlign: "center",
   },
 
