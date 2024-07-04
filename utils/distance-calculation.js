@@ -40,7 +40,7 @@ export function calcDist(remoteLat, remoteLong) {
     const φ1 = (remoteLat * Math.PI) / 180; // φ, λ in radians
     const φ2 = (location.coords.latitude * Math.PI) / 180;
     const Δφ = ((location.coords.latitude - remoteLat) * Math.PI) / 180;
-    const Δλ = ((location.coords.longitude - remoteLat) * Math.PI) / 180;
+    const Δλ = ((location.coords.longitude - remoteLong) * Math.PI) / 180;
 
     const a =
       Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
