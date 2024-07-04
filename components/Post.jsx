@@ -28,7 +28,8 @@ export default function Post({ toilet }) {
       />
 
       <View style={styles.content}>
-        <Text style={styles.title}>{toilet?.adrvoisfr}</Text>
+        <Text style={styles.title}>{toilet?.specloc}</Text>
+        <Text style={styles.rating}>{toilet?.adrvoisfr}</Text>
         <Text style={styles.rating}>{averageRating(toilet?.reviews)} ★</Text>
         <Text style={styles.distance}>~300m</Text>
         <Text style={styles.distance}>{toilet?.heureouv}</Text>

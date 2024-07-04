@@ -56,7 +56,9 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (!user) {
+      if (user) {
+        router.replace("/(tabs)/toilets");
+      } else {
         router.replace("/sign-in");
       }
     });
