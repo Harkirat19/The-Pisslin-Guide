@@ -1,9 +1,9 @@
 import { StyleSheet, View, FlatList } from "react-native";
 import Post from "../../../components/Post";
-import { Colors } from "@/constants/ThemeVariables";
+import { Colors, FontSizes } from "@/constants/ThemeVariables";
 import { useEffect, useState } from "react";
 import FilterContainer from "@/components/FilterContainer";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import { Icon } from "react-native-elements";
 
 export default function Home() {
@@ -69,7 +69,7 @@ export default function Home() {
         <Icon size={20} name="tune" type="material" color={Colors.text} />
       </TouchableOpacity>
       {filterVisible && <FilterComponent />}
-
+      <Text style={styles.title}>Toilets near you:</Text>
       <FlatList
         data={toilets}
         renderItem={({ item }) => <Post key={item.id} toilet={item} />}
@@ -115,7 +115,14 @@ const styles = StyleSheet.create({
   },
 
   listContent: {
-    marginTop: 50,
     paddingBottom: 70, //fix stupid bottom margin
+  },
+
+  title: {
+    margin: 10,
+    fontSize: FontSizes.large,
+    fontWeight: "bold",
+    textAlign: "center",
+    verticalAlign: "center"
   },
 });
