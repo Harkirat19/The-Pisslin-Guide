@@ -48,7 +48,7 @@ export default function TabLayout() {
         name="toilets"
         style={styles.bg}
         options={{
-          title: "Your  Pisslin'  Guide 🚽",
+          title: "The  Pisslin'  Guide 🚽",
           tabBarLabel: "Home",
           headerTitleAlign: "left",
           headerTitleStyle: {
@@ -56,6 +56,9 @@ export default function TabLayout() {
             marginLeft: 0,
             fontWeight: "bold",
             fontSize: 21.5,
+          },
+          headerStyle: {
+            backgroundColor: Colors.black,
           },
           headerShown: true,
           tabBarIcon: ({ color }) => (
@@ -81,6 +84,9 @@ export default function TabLayout() {
             fontWeight: "bold",
             fontSize: 21.5,
           },
+          headerStyle: {
+            backgroundColor: Colors.black,
+          },
           tabBarIcon: ({ color }) => <TabBarIcon name="map" color={color} />,
         }}
       />
@@ -93,6 +99,9 @@ export default function TabLayout() {
             marginLeft: 0,
             fontWeight: "bold",
             fontSize: 21.5,
+          },
+          headerStyle: {
+            backgroundColor: Colors.black,
           },
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
