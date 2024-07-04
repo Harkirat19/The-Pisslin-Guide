@@ -1,12 +1,15 @@
 import { StyleSheet, View, FlatList } from "react-native";
 import Post from "../../../components/Post";
-import { Colors } from "@/constants/ThemeVariables";
+import { Colors, FontSizes } from "@/constants/ThemeVariables";
 import { useEffect, useState } from "react";
 import FilterContainer from "@/components/FilterContainer";
+import { TouchableOpacity, Text } from "react-native";
+import { Icon } from "react-native-elements";
 
 export default function Home() {
   const [toilets, setToilets] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [filterVisible, setFilterVisible] = useState(false);
   useEffect(() => {
     getToilets();
   }, []);
@@ -49,11 +52,24 @@ export default function Home() {
     setReviews(allReviews);
   }
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.filterContainer}>
+  const FilterComponent = () => {
+    return (
+      <View style={styles.filterComponent}>
         <FilterContainer />
       </View>
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.filterCollapsed}
+        onPress={() => setFilterVisible(!filterVisible)}
+      >
+        <Icon size={20} name="tune" type="material" color={Colors.text} />
+      </TouchableOpacity>
+      {filterVisible && <FilterComponent />}
+      <Text style={styles.title}>Toilets near you:</Text>
       <FlatList
         data={toilets}
         renderItem={({ item }) => <Post key={item.id} toilet={item} />}
@@ -70,14 +86,43 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
 
-  filterContainer: {
+  filterCollapsed: {
     position: "absolute",
-    top: 0,
-    width: "100%",
-    zIndex: 1, // Ensure the filter stays on top
-    backgroundColor: Colors.background, // Match the background color
+    top: 10,
+    right: 10,
+    padding: 10,
+    backgroundColor: Colors.background,
+    borderRadius: 5,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 3,
+    zIndex: 1,
   },
+
+  filterComponent: {
+    position: "absolute",
+    top: 50,
+    padding: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 3,
+    zIndex: 1,
+    pointerEvents: "auto",
+  },
+
   listContent: {
-    paddingTop: 220, // Adjust this value based on the height of your FilterContainer
+    paddingBottom: 70, //fix stupid bottom margin
+  },
+
+  title: {
+    margin: 10,
+    fontSize: FontSizes.large,
+    fontWeight: "bold",
+    textAlign: "center",
+    verticalAlign: "center"
   },
 });

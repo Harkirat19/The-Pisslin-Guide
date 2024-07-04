@@ -152,14 +152,14 @@ export default function ToiletDetails() {
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude: toilet?.wgs84_lalo?.lat,
-          longitude: toilet?.wgs84_lalo?.lon,
+          latitude: toilet?.wgs84_lat,
+          longitude: toilet?.wgs84_long,
           latitudeDelta: 0.0922, // Adjust as needed for zoom level
           longitudeDelta: 0.0421, // Adjust as needed for zoom level
         }}
         region={{
-          latitude: toilet?.wgs84_lalo?.lat,
-          longitude: toilet?.wgs84_lalo?.lon,
+          latitude: toilet?.wgs84_lat,
+          longitude: toilet?.wgs84_long,
           latitudeDelta: 0.0922, // Adjust as needed for zoom level
           longitudeDelta: 0.0421, // Adjust as needed for zoom level
         }}
@@ -184,8 +184,8 @@ export default function ToiletDetails() {
         <Marker
           key={toilet.id}
           coordinate={{
-            latitude: toilet?.wgs84_lalo?.lat,
-            longitude: toilet?.wgs84_lalo?.lon,
+            latitude: toilet?.wgs84_lat,
+            longitude: toilet?.wgs84_long,
           }}
         >
           <Image
