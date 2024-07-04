@@ -23,7 +23,7 @@ export default function FilterContainer() {
             thumbStyle={{
               height: 16,
               width: 16,
-              backgroundColor: Colors.black,
+              backgroundColor: Colors.background,
             }}
           />
         </View>
@@ -34,7 +34,7 @@ export default function FilterContainer() {
             thumbStyle={{
               height: 16,
               width: 16,
-              backgroundColor: Colors.black,
+              backgroundColor: Colors.background,
             }}
             minimumValue={1}
             maximumValue={100}
@@ -47,11 +47,23 @@ export default function FilterContainer() {
 
         <View style={styles.preference}>
           <Text style={styles.smalltitle}>Free</Text>
-          <CheckBox left checked={check1} onPress={() => setCheck1(!check1)} />
+          <CheckBox
+            left
+            checked={check1}
+            onPress={() => setCheck1(!check1)}
+            color={Colors.background}
+            checkedColor={Colors.background}
+          />
         </View>
         <View style={styles.preference}>
           <Text style={styles.smalltitle}>Urinals</Text>
-          <CheckBox left checked={check2} onPress={() => setCheck2(!check2)} />
+          <CheckBox
+            left
+            checked={check2}
+            onPress={() => setCheck2(!check2)}
+            color={Colors.background}
+            checkedColor={Colors.background}
+          />
         </View>
       </ScrollView>
     </View>
@@ -61,16 +73,18 @@ export default function FilterContainer() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.black,
     paddingLeft: 15,
   },
 
   preferencecontainer: {
     flexDirection: "row",
     flexWrap: "nowrap", // Ensure the items do not wrap and stay in a single line for horizontal scroll
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.black,
     width: "100%",
     paddingTop: 15,
+    // alignItems: "flex-start",
+    // justifyContent: "flex-start",
   },
 
   preference: {
@@ -81,16 +95,19 @@ const styles = StyleSheet.create({
   title: {
     fontSize: FontSizes.large,
     fontWeight: "bold",
+    color: Colors.background,
+    marginBottom: 10,
   },
 
   smalltitle: {
     fontSize: FontSizes.small,
     fontWeight: "bold",
+    color: Colors.background,
   },
 
   distancetext: {
     fontSize: FontSizes.small,
-    color: Colors.black,
+    color: Colors.background,
     textAlign: "center",
     marginTop: -10,
   },

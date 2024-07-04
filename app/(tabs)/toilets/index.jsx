@@ -69,7 +69,7 @@ export default function Home() {
         <Icon size={20} name="tune" type="material" color={Colors.text} />
       </TouchableOpacity>
       {filterVisible && <FilterComponent />}
-      <Text style={styles.title}>Toilets near you:</Text>
+      <Text style={styles.title}>Toilets Near You:</Text>
       <FlatList
         data={toilets}
         renderItem={({ item }) => <Post key={item.id} toilet={item} />}
@@ -83,6 +83,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: "100%",
     backgroundColor: Colors.background,
   },
 
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
     top: 10,
     right: 10,
     padding: 10,
+    width: 40,
     backgroundColor: Colors.background,
     borderRadius: 5,
     shadowColor: "#000",
@@ -123,6 +125,7 @@ const styles = StyleSheet.create({
     fontSize: FontSizes.large,
     fontWeight: "bold",
     textAlign: "center",
-    verticalAlign: "center"
+    verticalAlign: "center",
+    marginTop: 20,
   },
 });

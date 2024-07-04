@@ -15,12 +15,7 @@ export default function Tags({ activeTags, inactiveTags }) {
         {activeTags.map((tag, index) => (
           <View key={index} style={styles.tag}>
             <Text style={styles.tagText}>{tag}</Text>
-            <Icon
-              size={15}
-              name="close"
-              type="material"
-              color={Colors.yellow}
-            />
+            <Icon size={15} name="close" type="material" color={Colors.black} />
           </View>
         ))}
         {inactiveTags.map((tag, index) => (
@@ -36,7 +31,7 @@ export default function Tags({ activeTags, inactiveTags }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.black,
     paddingLeft: 15,
     paddingTop: 10,
   },
@@ -44,7 +39,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: FontSizes.large,
     fontWeight: "bold",
-    color: Colors.text,
+    color: Colors.background,
     marginBottom: 10,
   },
 
@@ -56,7 +51,7 @@ const styles = StyleSheet.create({
   },
 
   tag: {
-    backgroundColor: Colors.black,
+    backgroundColor: Colors.background,
     borderRadius: 15,
     paddingVertical: 5,
     paddingHorizontal: 10,
@@ -74,7 +69,7 @@ const styles = StyleSheet.create({
   },
 
   inactiveTag: {
-    backgroundColor: Colors.darkgray,
+    backgroundColor: Colors.yellow,
     borderRadius: 15,
     paddingVertical: 5,
     paddingHorizontal: 10,
@@ -89,13 +84,13 @@ const styles = StyleSheet.create({
   },
 
   tagText: {
-    color: Colors.yellow,
+    color: Colors.black,
     fontSize: FontSizes.small,
     marginRight: 3,
   },
 
   inactiveTagText: {
-    color: Colors.background,
+    color: Colors.black,
     fontSize: FontSizes.small,
   },
 });

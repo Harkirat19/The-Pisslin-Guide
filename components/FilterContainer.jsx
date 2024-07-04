@@ -20,11 +20,13 @@ export default function FilterContainer() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.gray,
-    padding: 15,
+    backgroundColor: Colors.background,
+    padding: 0,
+    width: "100%",
+
     zIndex: 5,
     shadowColor: Colors.text,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 5, height: 5 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
