@@ -48,31 +48,53 @@ export default function ToiletDetails() {
     data.id = id;
     setToilet(data);
   }
-  async function getReviews() {
-    const response = await fetch(
-      `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets/${id}/reviews.json`
-    );
-    const data = await response.json();
-    const reviewsArray = await Promise.all(
-      Object.keys(data).map(async (key) => {
-        const review = data[key];
-        // Fetch user details for each review
-        const userResponse = await fetch(
-          `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/users/${review.user}.json`
-        );
-        const userData = await userResponse.json();
-        // Add user details to the review object
-        return {
-          id: key,
-          ...review,
-          userName: userData?.name, // Assuming the user's name is stored under 'name'
-          surName: userData?.surname, // Assuming the user's name is stored under 'name'
-          userImage: userData?.image, // Assuming the user's image URL is stored under 'image'
-        };
-      })
-    );
-    reviewsArray.sort((a, b) => b.createdAt - a.createdAt);
-    setReviews(reviewsArray);
+  async function getReviews(review) {
+    try {
+      const response = await fetch(
+        `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets/${id}/reviews.json`
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      const reviewsArray = await Promise.all(
+        Object.keys(data).map(async (key) => {
+          try {
+            const review = data[key];
+            const userResponse = await fetch(
+              `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/users/${review.user}.json`
+            );
+            if (!userResponse.ok) {
+              throw new Error("User network response was not ok");
+            }
+            const userData = await userResponse.json();
+            return {
+              id: key,
+              ...review,
+              userName: userData?.name,
+              surName: userData?.surname,
+              userImage: userData?.image,
+            };
+          } catch (userError) {
+            console.error("Error fetching user details:", userError);
+            // Return the review with partial or no user data if user fetch fails
+            return {
+              id: key,
+              ...review,
+              userName: "Unknown",
+              surName: "",
+              userImage: "",
+            };
+          }
+        })
+      );
+      reviewsArray.sort((a, b) => b.createdAt - a.createdAt);
+      setReviews(reviewsArray);
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+      // Handle the error or set reviews to an empty array or a default state
+      setReviews([]);
+    }
   }
 
   useEffect(() => {
@@ -95,7 +117,7 @@ export default function ToiletDetails() {
 
   return (
     <ScrollView style={styles.container}>
-      <Stack.Screen options={{ title: toilet?.adrvoisfr || "" }} />
+      <Stack.Screen options={{ title: toilet?.specloc || "" }} />
       <Image
         source={{
           uri: toilet?.image
@@ -106,7 +128,8 @@ export default function ToiletDetails() {
         resizeMode="cover"
       />
       <View style={styles.textContainter}>
-        <Text style={styles.title}>{toilet?.adrvoisfr}</Text>
+        <Text style={styles.title}>{toilet?.specloc}</Text>
+        <Text>{toilet?.adrvoisfr}</Text>
         <Text>{toilet?.typtoil}</Text>
         <Text style={styles.rating}>{averageRating(reviews)} ★</Text>
         <View style={styles.iconsContainer}>
@@ -184,10 +207,13 @@ export default function ToiletDetails() {
           onPress={() => router.push(`/add-review/${id}`)}
         />
       </View>
-
-      {reviews.map((review) => (
-        <Review key={review.id} review={review} />
-      ))}
+      {reviews.length === 0 ? (
+        <Text style={styles.noReviewsText}>
+          No reviews yet. Be the first to make one
+        </Text>
+      ) : (
+        reviews.map((review) => <Review key={review.id} review={review} />)
+      )}
     </ScrollView>
   );
 }
@@ -290,5 +316,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 16,
     color: Colors.text,
+  },
+  noReviewsText: {
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: Colors.text,
+    margin: 20,
   },
 });
