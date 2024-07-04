@@ -20,6 +20,7 @@ export default function PostModal() {
   const [image, setImage] = useState("");
   const [toiletName, setToiletName] = useState("");
   const [toiletDesc, setToiletDesc] = useState("");
+  const [workingHours, setWorkingHours] = useState("");
   const [rating, setRating] = useState(0);
   const { showActionSheetWithOptions } = useActionSheet();
   const router = useRouter();
@@ -40,6 +41,7 @@ export default function PostModal() {
     setImage(data.image);
     setToiletName(data.toiletName);
     setToiletDesc(data.toiletDesc);
+    setWorkingHours(data.workingHours);
     setRating(data.rating || 0);
   }
 
@@ -138,6 +140,8 @@ export default function PostModal() {
       pmr: "Nee / Non",
       rue: location.street,
       specloc: toiletName,
+      toildesc: toiletDesc,
+      heureouv: workingHours,
       typedut: "TOILET",
       typeeng: "TOILET",
       typefr: "TOILETTE",
@@ -231,6 +235,17 @@ export default function PostModal() {
             onChangeText={setToiletDesc}
             value={toiletDesc}
             placeholder="Type the description for the toilet"
+            placeholderTextColor="#7F8C8D"
+          />
+        </View>
+      </View>
+      <View style={styles.viewStyle}>
+        <Text style={styles.title}>Working Hours:</Text>
+        <View style={styles.placeholder}>
+          <TextInput
+            onChangeText={setWorkingHours}
+            value={workingHours}
+            placeholder="Enter working hours..."
             placeholderTextColor="#7F8C8D"
           />
         </View>
