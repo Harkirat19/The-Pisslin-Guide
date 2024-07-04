@@ -122,6 +122,9 @@ export default function MapTab() {
                   latitude: latitude,
                   longitude: longitude,
                 }}
+                style={{
+                  zIndex: 5,
+                }}
                 // title={toilet.specloc}
                 // description={toilet.adrvoisfr}
                 // source={{ uri: toilet.image }}
