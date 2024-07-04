@@ -48,7 +48,7 @@ export default function ToiletDetails() {
     data.id = id;
     setToilet(data);
   }
-  async function getReviews() {
+  async function getReviews(review) {
     try {
       const response = await fetch(
         `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets/${id}/reviews.json`
