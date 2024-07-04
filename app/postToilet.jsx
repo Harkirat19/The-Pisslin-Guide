@@ -187,6 +187,9 @@ export default function PostModal() {
             fontWeight: "bold",
             fontSize: 21.5,
           },
+          headerStyle: {
+            backgroundColor: "#000000",
+          },
 
           headerLeft: () => (
             <Button
@@ -272,10 +275,7 @@ export default function PostModal() {
         />
       </View> */}
       <View style={styles.buttonContainer}>
-        <StyledButton
-          text="Submit New Toilet"
-          onPress={handleSave}
-        />
+        <StyledButton text="Submit New Toilet" onPress={handleSave} />
       </View>
     </ScrollView>
   );
