@@ -106,7 +106,8 @@ export default function ToiletDetails() {
         resizeMode="cover"
       />
       <View style={styles.textContainter}>
-        <Text style={styles.title}>{toilet?.adrvoisfr}</Text>
+        <Text style={styles.title}>{toilet?.specloc}</Text>
+        <Text>{toilet?.adrvoisfr}</Text>
         <Text>{toilet?.typtoil}</Text>
         <Text style={styles.rating}>{averageRating(reviews)} ★</Text>
         <View style={styles.iconsContainer}>
