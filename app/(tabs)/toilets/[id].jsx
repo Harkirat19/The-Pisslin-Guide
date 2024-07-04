@@ -117,7 +117,7 @@ export default function ToiletDetails() {
 
   return (
     <ScrollView style={styles.container}>
-      <Stack.Screen options={{ title: toilet?.adrvoisfr || "" }} />
+      <Stack.Screen options={{ title: toilet?.specloc || "" }} />
       <Image
         source={{
           uri: toilet?.image
