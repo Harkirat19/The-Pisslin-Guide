@@ -29,10 +29,15 @@ export default function Post({ toilet }) {
       />
 
       <View style={styles.content}>
-        <Text style={styles.title}>{toilet?.adrvoisfr}</Text>
+        <Text style={styles.title}>{toilet?.specloc}</Text>
+        <Text style={styles.rating}>{toilet?.adrvoisfr}</Text>
         <Text style={styles.rating}>{averageRating(toilet?.reviews)} ★</Text>
         <Text style={styles.distance}>{calcDist(toilet?.wgs84_lat,toilet?.wgs84_long)}</Text>
-        <Text style={styles.distance}>{toilet?.heureouv}</Text>
+        <Text style={styles.distance}>
+          {toilet?.heureouv === "null"
+            ? "Unkown opening hours"
+            : toilet?.heureouv}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -42,8 +47,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.yellow,
     padding: 10,
-    marginTop: 25,
-    margin: 10,
+    marginTop: 15,
+    marginLeft: 10,
     borderRadius: 8,
     shadowColor: Colors.text,
     shadowOffset: { width: 0, height: 2 },
@@ -55,8 +60,9 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 100,
-    height: 100,
+    height: "100%",
     marginRight: 10,
+    borderRadius: 4,
   },
   content: {
     flex: 1, // Take up remaining space

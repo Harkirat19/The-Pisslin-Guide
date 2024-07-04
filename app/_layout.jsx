@@ -56,7 +56,9 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (!user) {
+      if (user) {
+        router.replace("/(tabs)/toilets");
+      } else {
         router.replace("/sign-in");
       }
     });
@@ -78,23 +80,45 @@ function RootLayoutNav() {
                 fontWeight: "bold",
                 fontSize: 21.5,
               },
+              headerStyle: {
+                backgroundColor: "#000000",
+              },
             }}
           />
           <Stack.Screen
             name="add-review"
             options={{
+              title: "Add Review",
               presentation: "modal",
-              headerStyle: {
-                backgroundColor: Colors.background,
-                headerTintColor: "black",
-              },
-              headerTintColor: "black",
+
               headerTitleStyle: {
+                color: "#f9cc31",
+                marginLeft: 0,
                 fontWeight: "bold",
-                textAlign: "center",
+                fontSize: 21.5,
+              },
+              headerStyle: {
+                backgroundColor: "#000000",
               },
             }}
           />
+          {/* <Stack.Screen
+            name="toilets/[id]"
+            options={{
+              title: "Toilet Details",
+              presentation: "modal",
+
+              headerTitleStyle: {
+                color: "#f9cc31",
+                marginLeft: 0,
+                fontWeight: "bold",
+                fontSize: 21.5,
+              },
+              headerStyle: {
+                backgroundColor: Colors.black,
+              },
+            }}
+          ></Stack.Screen> */}
         </Stack>
       </ThemeProvider>
     </ActionSheetProvider>

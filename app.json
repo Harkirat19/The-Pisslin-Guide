@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "rnss24-group-4-frederik-jonas-eniko-harkirat",
+    "name": "Pisslin' Guide",
     "slug": "rnss24-group-4-frederik-jonas-eniko-harkirat",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#dfe2e3"
+      "backgroundColor": "#000000"
     },
     "ios": {
       "supportsTablet": true
@@ -18,7 +18,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#000000"
       }
     },
     "web": {

@@ -7,7 +7,7 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import { Colors } from "@/constants/ThemeVariables";
+import { Colors, FontSizes } from "@/constants/ThemeVariables";
 import { Text, View } from "@/components/Themed";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import StyledButton from "@/components/StyledButton";
@@ -20,6 +20,7 @@ export default function PostModal() {
   const [image, setImage] = useState("");
   const [toiletName, setToiletName] = useState("");
   const [toiletDesc, setToiletDesc] = useState("");
+  const [workingHours, setWorkingHours] = useState("");
   const [rating, setRating] = useState(0);
   const { showActionSheetWithOptions } = useActionSheet();
   const router = useRouter();
@@ -40,6 +41,7 @@ export default function PostModal() {
     setImage(data.image);
     setToiletName(data.toiletName);
     setToiletDesc(data.toiletDesc);
+    setWorkingHours(data.workingHours);
     setRating(data.rating || 0);
   }
 
@@ -138,6 +140,8 @@ export default function PostModal() {
       pmr: "Nee / Non",
       rue: location.street,
       specloc: toiletName,
+      toildesc: toiletDesc,
+      heureouv: workingHours,
       typedut: "TOILET",
       typeeng: "TOILET",
       typefr: "TOILETTE",
@@ -183,6 +187,9 @@ export default function PostModal() {
             fontWeight: "bold",
             fontSize: 21.5,
           },
+          headerStyle: {
+            backgroundColor: "#000000",
+          },
 
           headerLeft: () => (
             <Button
@@ -201,7 +208,7 @@ export default function PostModal() {
         }}
       />
       <View style={styles.viewStyle}>
-        <Text style={styles.title}>Upload Toilet Image</Text>
+        <Text style={styles.text}>Upload Toilet Image</Text>
         <TouchableOpacity onPress={chooseCameraOrLibrary}>
           <Image
             style={styles.image}
@@ -213,27 +220,49 @@ export default function PostModal() {
           />
         </TouchableOpacity>
       </View>
-      <View style={styles.viewStyle}>
-        <Text style={styles.title}>Toilet Name</Text>
-        <View style={styles.placeholder}>
-          <TextInput
-            onChangeText={setToiletName}
-            value={toiletName}
-            placeholder="Type the name for the toilet"
-            placeholderTextColor="#7F8C8D"
-          />
-        </View>
+
+      <View style={styles.input}>
+        <Text style={styles.label}>Toilet Name</Text>
+        <TextInput
+          onChangeText={setToiletName}
+          value={toiletName}
+          placeholder="Type the name for the toilet"
+          placeholderTextColor="#7F8C8D"
+        />
       </View>
-      <View style={styles.viewStyle}>
-        <Text style={styles.title}>Toilet Description</Text>
-        <View style={styles.placeholder}>
-          <TextInput
-            onChangeText={setToiletDesc}
-            value={toiletDesc}
-            placeholder="Type the description for the toilet"
-            placeholderTextColor="#7F8C8D"
-          />
-        </View>
+
+      <View style={styles.input}>
+        <Text style={styles.label}>Toilet Description</Text>
+        <TextInput
+          onChangeText={setToiletDesc}
+          value={toiletDesc}
+          placeholder="Type the description for the toilet"
+          placeholderTextColor="#7F8C8D"
+        />
+      </View>
+
+      <View style={styles.input}>
+        <Text style={styles.label}>Working Hours</Text>
+        <TextInput
+          onChangeText={setWorkingHours}
+          value={workingHours}
+          placeholder="Enter working hours"
+          placeholderTextColor="#7F8C8D"
+        />
+      </View>
+
+      <View style={styles.input}>
+        <Text style={styles.label}>Current Location</Text>
+        <TextInput
+          placeholder="Location for the Toilet"
+          placeholderTextColor="#7F8C8D"
+          value={
+            location.street && location.city
+              ? `${location.street}, ${location.city}, ${location.country}`
+              : "Loading your current location ... "
+          }
+          editable={false}
+        />
       </View>
       {/* <View style={styles.viewStyle}>
         <Text style={styles.title}>Ratings</Text>
@@ -245,21 +274,6 @@ export default function PostModal() {
           onFinishRating={(rating) => setRating(rating)}
         />
       </View> */}
-      <View style={styles.viewStyle}>
-        <Text style={styles.title}>Current Location</Text>
-        <View style={styles.placeholder}>
-          <TextInput
-            placeholder="Location for the Toilet"
-            placeholderTextColor="#7F8C8D"
-            value={
-              location.street && location.city
-                ? `${location.street}, ${location.city}, ${location.country}`
-                : "Loading your current location ... "
-            }
-            editable={false}
-          />
-        </View>
-      </View>
       <View style={styles.buttonContainer}>
         <StyledButton text="Submit New Toilet" onPress={handleSave} />
       </View>
@@ -305,15 +319,13 @@ const styles = StyleSheet.create({
     color: "black",
   },
   image: {
-    marginLeft: 20,
-    marginBottom: 20,
-    width: 350,
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginBottom: 10,
+    width: "95%",
     height: 300,
     backgroundColor: "white",
     marginTop: 0,
-    borderStyle: "solid",
-    borderColor: "black",
-    borderWidth: 5,
   },
   location: {
     marginTop: 0,
@@ -326,12 +338,33 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     backgroundColor: Colors.yellow,
-    borderStyle: "solid",
-    borderColor: "black",
-    borderWidth: 5,
     borderRadius: 15,
     padding: 15,
     marginRight: 5,
     marginLeft: 5,
+  },
+
+  label: {
+    color: Colors.darkgray,
+    fontSize: FontSizes.small,
+  },
+
+  input: {
+    width: "95%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    paddingLeft: 10,
+    paddingTop: 5,
+    paddingBottom: 5,
+    marginTop: 10,
+    backgroundColor: Colors.yellow,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: Colors.black,
+  },
+
+  text: {
+    color: Colors.darkgray,
+    marginLeft: 10,
   },
 });

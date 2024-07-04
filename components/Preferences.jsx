@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text, ScrollView } from "react-native";
 import { Colors, FontSizes } from "../constants/ThemeVariables";
-import { Slider } from "react-native-elements/dist/slider/Slider";
-import { CheckBox } from "react-native-elements/dist/checkbox/CheckBox";
-import { useState } from "react";
+import { Slider } from "react-native-elements";
+import { CheckBox } from "react-native-elements";
 
 export default function FilterContainer() {
   const [check1, setCheck1] = useState(false);
@@ -13,7 +12,7 @@ export default function FilterContainer() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Preferences</Text>
-      <View
+      <ScrollView
         style={styles.preferencecontainer}
         horizontal
         showsHorizontalScrollIndicator={true}
@@ -54,7 +53,7 @@ export default function FilterContainer() {
           <Text style={styles.smalltitle}>Urinals</Text>
           <CheckBox left checked={check2} onPress={() => setCheck2(!check2)} />
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -62,21 +61,21 @@ export default function FilterContainer() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.gray,
     paddingLeft: 15,
   },
 
   preferencecontainer: {
-    flex: 1,
     flexDirection: "row",
-    backgroundColor: Colors.background,
-    justifyContent: "space-between",
+    flexWrap: "nowrap", // Ensure the items do not wrap and stay in a single line for horizontal scroll
+    backgroundColor: Colors.gray,
     width: "100%",
     paddingTop: 15,
   },
 
   preference: {
-    width: "22%",
+    marginRight: 15, // Add some spacing between the items
+    width: 80, // Set a fixed width that works well for your design
   },
 
   title: {

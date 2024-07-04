@@ -36,7 +36,7 @@ export default function Tags({ activeTags, inactiveTags }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.gray,
     paddingLeft: 15,
     paddingTop: 10,
   },
