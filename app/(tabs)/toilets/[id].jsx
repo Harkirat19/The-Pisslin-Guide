@@ -185,10 +185,13 @@ export default function ToiletDetails() {
           onPress={() => router.push(`/add-review/${id}`)}
         />
       </View>
-
-      {reviews.map((review) => (
-        <Review key={review.id} review={review} />
-      ))}
+      {reviews.length === 0 ? (
+        <Text style={styles.noReviewsText}>
+          No reviews yet. Be the first to make one
+        </Text>
+      ) : (
+        reviews.map((review) => <Review key={review.id} review={review} />)
+      )}
     </ScrollView>
   );
 }
@@ -291,5 +294,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 16,
     color: Colors.text,
+  },
+  noReviewsText: {
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: Colors.text,
+    margin: 20,
   },
 });
