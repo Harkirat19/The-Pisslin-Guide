@@ -49,30 +49,52 @@ export default function ToiletDetails() {
     setToilet(data);
   }
   async function getReviews() {
-    const response = await fetch(
-      `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets/${id}/reviews.json`
-    );
-    const data = await response.json();
-    const reviewsArray = await Promise.all(
-      Object.keys(data).map(async (key) => {
-        const review = data[key];
-        // Fetch user details for each review
-        const userResponse = await fetch(
-          `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/users/${review.user}.json`
-        );
-        const userData = await userResponse.json();
-        // Add user details to the review object
-        return {
-          id: key,
-          ...review,
-          userName: userData?.name, // Assuming the user's name is stored under 'name'
-          surName: userData?.surname, // Assuming the user's name is stored under 'name'
-          userImage: userData?.image, // Assuming the user's image URL is stored under 'image'
-        };
-      })
-    );
-    reviewsArray.sort((a, b) => b.createdAt - a.createdAt);
-    setReviews(reviewsArray);
+    try {
+      const response = await fetch(
+        `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets/${id}/reviews.json`
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      const reviewsArray = await Promise.all(
+        Object.keys(data).map(async (key) => {
+          try {
+            const review = data[key];
+            const userResponse = await fetch(
+              `https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/users/${review.user}.json`
+            );
+            if (!userResponse.ok) {
+              throw new Error("User network response was not ok");
+            }
+            const userData = await userResponse.json();
+            return {
+              id: key,
+              ...review,
+              userName: userData?.name,
+              surName: userData?.surname,
+              userImage: userData?.image,
+            };
+          } catch (userError) {
+            console.error("Error fetching user details:", userError);
+            // Return the review with partial or no user data if user fetch fails
+            return {
+              id: key,
+              ...review,
+              userName: "Unknown",
+              surName: "",
+              userImage: "",
+            };
+          }
+        })
+      );
+      reviewsArray.sort((a, b) => b.createdAt - a.createdAt);
+      setReviews(reviewsArray);
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+      // Handle the error or set reviews to an empty array or a default state
+      setReviews([]);
+    }
   }
 
   useEffect(() => {
