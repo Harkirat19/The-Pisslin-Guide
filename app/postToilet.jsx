@@ -208,7 +208,7 @@ export default function PostModal() {
         }}
       />
       <View style={styles.viewStyle}>
-        <Text style={styles.text}>Upload Toilet Image</Text>
+        <Text style={styles.text}></Text>
         <TouchableOpacity onPress={chooseCameraOrLibrary}>
           <Image
             style={styles.image}
@@ -289,9 +289,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   buttonContainer: {
-    marginBottom: 60,
+    marginTop: 10,
     backgroundColor: Colors.background,
-    marginTop: 20,
+    // marginTop: 20,
     borderRadius: 8,
     marginHorizontal: 10,
   },
@@ -325,7 +325,10 @@ const styles = StyleSheet.create({
     width: "95%",
     height: 300,
     backgroundColor: "white",
-    marginTop: 0,
+    marginTop: 20,
+    borderRadius: 8,
+    borderColor: "black",
+    borderWidth: 1,
   },
   location: {
     marginTop: 0,
@@ -345,7 +348,7 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    color: Colors.darkgray,
+    color: Colors.black,
     fontSize: FontSizes.small,
   },
 
@@ -356,7 +359,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 5,
     paddingBottom: 5,
-    marginTop: 10,
+    marginTop: 30,
     backgroundColor: Colors.yellow,
     borderRadius: 8,
     borderWidth: 1,
