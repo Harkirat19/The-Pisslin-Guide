@@ -128,7 +128,7 @@ export default function ToiletDetails() {
         resizeMode="cover"
       />
       <View style={styles.textContainter}>
-        <Text style={styles.title}>{toilet?.specloc}</Text>
+        <Text style={styles.title}>{toilet?.toildesc}</Text>
         <Text>{toilet?.adrvoisfr}</Text>
         <Text>{toilet?.typtoil}</Text>
         <Text style={styles.rating}>{averageRating(reviews)} ★</Text>
@@ -242,9 +242,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   title: {
-    fontSize: 24,
+    fontSize: 15,
     fontWeight: "bold",
-    marginVertical: 8,
+    marginVertical: 12,
   },
   mail: {
     fontSize: 16,
