@@ -80,6 +80,9 @@ function RootLayoutNav() {
                 fontWeight: "bold",
                 fontSize: 21.5,
               },
+              headerStyle: {
+                backgroundColor: "#000000",
+              },
             }}
           />
           <Stack.Screen
@@ -95,7 +98,7 @@ function RootLayoutNav() {
                 fontSize: 21.5,
               },
               headerStyle: {
-                backgroundColor: Colors.black,
+                backgroundColor: "#000000",
               },
             }}
           />
