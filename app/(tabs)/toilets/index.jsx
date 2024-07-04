@@ -3,12 +3,13 @@ import Post from "../../../components/Post";
 import { Colors, FontSizes } from "@/constants/ThemeVariables";
 import { useEffect, useState } from "react";
 import FilterContainer from "@/components/FilterContainer";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, RefreshControl } from "react-native";
 import { Icon } from "react-native-elements";
 
 export default function Home() {
   const [toilets, setToilets] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
   const [filterVisible, setFilterVisible] = useState(false);
   useEffect(() => {
     getToilets();
@@ -60,6 +61,13 @@ export default function Home() {
     );
   };
 
+  async function handleRefresh() {
+    setRefreshing(true);
+    await getToilets();
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 500);
+  }
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -75,6 +83,13 @@ export default function Home() {
         renderItem={({ item }) => <Post key={item.id} toilet={item} />}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.listContent}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={handleRefresh}
+            tintColor="white"
+          />
+        }
       />
     </View>
   );
