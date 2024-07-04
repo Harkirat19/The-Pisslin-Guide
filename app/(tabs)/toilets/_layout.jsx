@@ -1,26 +1,25 @@
 import { Stack } from "expo-router";
-import { primary, tintColorLight } from "@/constants/ThemeVariables";
+import { Colors } from "@/constants/ThemeVariables";
 export default function ToiletsLayout() {
   return (
     <Stack
       screenOptions={{
-        headerStyle: {
-          backgroundColor: primary,
-        },
-        headerTintColor: tintColorLight,
         headerTitleStyle: {
+          color: "#f9cc31",
+          marginLeft: 0,
           fontWeight: "bold",
-          textAlign: "center",
+          fontSize: 21.5,
         },
-        tabBarStyle: {
-          backgroundColor: primary,
+        headerStyle: {
+          backgroundColor: Colors.black,
         },
+        headerTintColor: "#f9cc31",
       }}
     >
       <Stack.Screen
         name="index"
         options={{
-          title: "The Pisslin' Guide",
+          title: "",
           headerTitleAlign: "center",
           headerShown: false,
         }}
