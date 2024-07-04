@@ -61,20 +61,21 @@ export default function FilterContainer() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.gray,
     paddingLeft: 15,
   },
 
   preferencecontainer: {
-    flex: 1,
     flexDirection: "row",
-    backgroundColor: Colors.background,
+    flexWrap: "nowrap", // Ensure the items do not wrap and stay in a single line for horizontal scroll
+    backgroundColor: Colors.gray,
     width: "100%",
     paddingTop: 15,
   },
 
   preference: {
-    width: "22%",
+    marginRight: 15, // Add some spacing between the items
+    width: 80, // Set a fixed width that works well for your design
   },
 
   title: {

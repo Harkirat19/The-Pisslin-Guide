@@ -46,6 +46,7 @@ export default function TabLayout() {
     >
       <Tabs.Screen
         name="toilets"
+        style={styles.bg}
         options={{
           title: "Your  Pisslin'  Guide 🚽",
           tabBarLabel: "Home",
@@ -111,5 +112,8 @@ const styles = StyleSheet.create({
     color: "black",
     fontWeight: "bold",
     textAlign: "center",
+  },
+  bg: {
+    backgroundColor: "black"
   },
 });
