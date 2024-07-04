@@ -32,7 +32,9 @@ export default function Post({ toilet }) {
         <Text style={styles.title}>{toilet?.specloc}</Text>
         <Text style={styles.rating}>{toilet?.adrvoisfr}</Text>
         <Text style={styles.rating}>{averageRating(toilet?.reviews)} ★</Text>
-        <Text style={styles.distance}>{calcDist(toilet?.wgs84_lat,toilet?.wgs84_long)}</Text>
+        <Text style={styles.distance}>
+          {calcDist(toilet?.wgs84_lat, toilet?.wgs84_long)}
+        </Text>
         <Text style={styles.distance}>
           {toilet?.heureouv === "null"
             ? "Unkown opening hours"

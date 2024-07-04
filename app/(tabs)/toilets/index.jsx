@@ -5,17 +5,27 @@ import { useEffect, useState } from "react";
 import FilterContainer from "@/components/FilterContainer";
 import { TouchableOpacity, Text, RefreshControl } from "react-native";
 import { Icon } from "react-native-elements";
+import { calcDist, getCurrentLocation } from "@/utils/distanceMathsValue";
 
 export default function Home() {
   const [toilets, setToilets] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [filterVisible, setFilterVisible] = useState(false);
+  const [userLocation, setUserLocation] = useState(null);
   useEffect(() => {
-    getToilets();
+    (async () => {
+      try {
+        const location = await getCurrentLocation();
+        setUserLocation(location);
+        await getToilets(location);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
   }, []);
 
-  async function getToilets() {
+  async function getToilets(userLocation) {
     const response = await fetch(
       "https://piin-88060-default-rtdb.europe-west1.firebasedatabase.app/toilets.json"
     );
@@ -44,12 +54,25 @@ export default function Home() {
         };
       })
     );
+    const toiletsWithDistance = toiletsArray.map((toilet) => ({
+      ...toilet,
+      distance: calcDist(
+        userLocation?.latitude,
+        userLocation?.longitude,
+        toilet?.wgs84_lat,
+        toilet?.wgs84_long
+      ),
+    }));
+
+    toiletsWithDistance.sort((a, b) => a.distance - b.distance);
+
     // Flatten the reviews from all toilets into a single array
-    const allReviews = toiletsArray.reduce(
+    const allReviews = toiletsWithDistance.reduce(
       (acc, toilet) => [...acc, ...toilet.reviews],
       []
     );
-    setToilets(toiletsArray);
+
+    setToilets(toiletsWithDistance);
     setReviews(allReviews);
   }
 
@@ -62,11 +85,15 @@ export default function Home() {
   };
 
   async function handleRefresh() {
+    setToilets([]);
     setRefreshing(true);
-    await getToilets();
+    await getToilets(userLocation);
     setTimeout(() => {
       setRefreshing(false);
     }, 500);
+  }
+  if (!toilets) {
+    return <Text>Loading...</Text>;
   }
   return (
     <View style={styles.container}>
