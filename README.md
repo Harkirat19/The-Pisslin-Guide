@@ -45,3 +45,17 @@ In an ideal world where everybody uses the Pisslin' Guide, nobody is uncomfortab
 
 ## Show off your application’s LOGO
 ![android-chrome-512x512](https://github.com/user-attachments/assets/4d6ee9bb-ea71-4a67-befb-4ab08bd436de)
+
+## Prototype Planning 
+
+### Prototype
+![345869579-5d923e4d-7a60-48ff-9619-ecaadafba48e](https://github.com/user-attachments/assets/4c22ba9d-9eeb-46ab-ade1-ec51c5ce543c)
+
+### Flow of the APP
+![345869720-fd090eae-6c7c-4306-97d6-0722b0f22edc](https://github.com/user-attachments/assets/735e77c9-db04-4296-8c8a-d810a176da63)
+
+
+
+
+## Video Demo of the APP
+https://private-user-images.githubusercontent.com/89975035/346140463-2793fe25-4870-4e2b-8199-c2a736e0831f.mp4?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjI0NTgzMjMsIm5iZiI6MTcyMjQ1ODAyMywicGF0aCI6Ii84OTk3NTAzNS8zNDYxNDA0NjMtMjc5M2ZlMjUtNDg3MC00ZTJiLTgxOTktYzJhNzM2ZTA4MzFmLm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA3MzElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNzMxVDIwMzM0M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWZkYTFiM2E1NzI2ZGExMzNhYWI5YWEyZjI4NDc4NmYyMGIzYjI2MWU0ZDQ5ZDk5NDM2MWEwZTlmYTQxY2UwOTgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.cjGyBonUY32f9nDL8vSzcdQ8rGaa3UU3RMVki2RBNd4
