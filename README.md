@@ -39,3 +39,7 @@ In an ideal world where everybody uses the Pisslin' Guide, nobody is uncomfortab
 - People can rate toilets, so others know where to go and not to go.
 - Users can use filter options for their specific needs.
 - The app will keep people updated with new information by users, ensuring the most current and accurate data.
+
+
+## Show off your application’s LOGO
+![android-chrome-512x512](https://github.com/user-attachments/assets/4d6ee9bb-ea71-4a67-befb-4ab08bd436de)
