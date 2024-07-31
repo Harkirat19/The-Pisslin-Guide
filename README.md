@@ -1,4 +1,4 @@
-﻿# The-Pisslin-Guide
+﻿# The Pisslin' Guide
 
 #### To run the app, Use command: npx expo start --tunnel
 
