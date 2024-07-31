@@ -1,6 +1,6 @@
 ﻿# The-Pisslin-Guide
 
-## To run the app, Use command: npx expo start --tunnel
+#### To run the app, Use command: npx expo start --tunnel
 
 ## TITLE and description of the app
 ### The Pisslin' Guide
