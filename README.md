@@ -1,5 +1,7 @@
 ﻿# The-Pisslin-Guide
 
+## To run the app, Use command: npx expo start --tunnel
+
 ## TITLE and description of the app
 ### The Pisslin' Guide
 The Pisslin' Guide is a convenient app for rating, posting, and commenting on public toilets. Featuring an interactive map and customizable preferences, it helps you find the best nearby restrooms, ensuring a clean and comfortable experience wherever you go.
